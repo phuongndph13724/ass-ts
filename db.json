@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Sản phẩm A",
+      "price": 1000,
+      "title": "Mô tả sản phẩm A"
+    },
+    {
+      "id": 2,
+      "name": "Sản phẩm B",
+      "price": 1000,
+      "title": "Mô tả sản phẩm B"
+    },
+    {
+      "id": 3,
+      "name": "Sản phẩm C",
+      "price": 1000,
+      "title": "Mô tả sản phẩm C"
+    },
+    {
+      "id": 4,
+      "name": "Sản phẩm D",
+      "price": 1000,
+      "title": "Mô tả sản phẩm D"
+    },
+    {
+      "id": 5,
+      "name": "Sản phẩm E",
+      "price": 1000,
+      "title": "Mô tả sản phẩm E"
+    },
+    {
+      "name": "Sản Phẩm A dsadsa",
+      "price": "11111",
+      "title": "sadsadsadsadsa",
+      "id": 6
+    }
+  ]
+}
