@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {}
 
-const Product = (props: Props) => {
+const ProductPage = (props: Props) => {
   return (
     <div className="h-auto py-10">
         <div className="shop-box-inner">
@@ -205,4 +205,4 @@ const Product = (props: Props) => {
   );
 }
 
-export default Product
+export default ProductPage;

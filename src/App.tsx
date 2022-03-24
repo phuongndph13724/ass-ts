@@ -7,7 +7,7 @@ import axios from 'axios'
 import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
 import WebsiteLayout from './pages/layouts/client/WebsiteLayout';
 import Home from './pages/Home';
-import Product from './pages/layouts/client/products/Product';
+import ProductPage from "./pages/layouts/client/products/ProductPage";
 import AdminLayout from './pages/layouts/admin/AdminLayout';
 import Dashboard from './pages/Dashboard';
 import ManagerProduct from './pages/layouts/admin/products/ManagerProduct';
@@ -53,7 +53,7 @@ function App() {
             <Route path="/" element={<WebsiteLayout />}>
               <Route index element={<Home />} />
               <Route path="product">
-                <Route index element={<Product />} />
+                <Route index element={<ProductPage />} />
               </Route>
             </Route>
             <Route path="admin" element={<AdminLayout />}>
