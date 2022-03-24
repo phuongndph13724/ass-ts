@@ -14,7 +14,7 @@ const WebsiteLayout = (props: Props) => {
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li className="nav-item"><a className="nav-link" href="index.html">Home</a></li>
-                  <li className="nav-item"><a className="nav-link" href="about.html">Product</a></li>
+                  <li className="nav-item"><a className="nav-link" href="product">Product</a></li>
                   <li className="nav-item"><a className="nav-link" href="contact.html">About</a></li>
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>

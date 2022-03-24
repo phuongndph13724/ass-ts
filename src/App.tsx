@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="App">
       <hr></hr>
-       <div>
+      <div>
         {/* <header>
           <ul>
             <li><NavLink to="/">Home page</NavLink></li>
@@ -50,22 +50,29 @@ function App() {
         </header> */}
         <main>
           <Routes>
-              <Route path="/" element={<WebsiteLayout/>}>
-                <Route index element={<Home />} />
-                <Route path="product" element={<Product />} />
+            <Route path="/" element={<WebsiteLayout />}>
+              <Route index element={<Home />} />
+              <Route path="product">
+                <Route index element={<Product />} />
               </Route>
-              <Route path="admin" element={<AdminLayout/>}>
-                  <Route index element={<Navigate to="dashboard"/>}/>
-                  <Route path="dashboard" element={<Dashboard/>}/>
-                  <Route path="product" element={<ManagerProduct data={products}/>}/>
-                  <Route path='/admin/product/add' element={<ProductAdd onAdd={onHandleAdd}/>}/>
-              </Route>
+            </Route>
+            <Route path="admin" element={<AdminLayout />}>
+              <Route index element={<Navigate to="dashboard" />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route
+                path="product"
+                element={<ManagerProduct data={products} />}
+              />
+              <Route
+                path="/admin/product/add"
+                element={<ProductAdd onAdd={onHandleAdd} />}
+              />
+            </Route>
           </Routes>
-          
         </main>
       </div>
     </div>
-  )
+  );
 }
 
 
