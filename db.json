@@ -36,5 +36,15 @@
       "title": "sadsadsadsadsa",
       "id": 6
     }
+  ],
+  "users": [
+    {
+      "email": "dacphuongotp@gmail.com",
+      "password": "$2a$10$sjKQyZiHgsJukOIwunddPO/KB0aKvV3kKAhzr6AhTeuYyTFl51Ehq",
+      "name": "Nguyễn Đắc Phương",
+      "phone": "0969645534",
+      "address": "Bắc Ninh",
+      "id": 1
+    }
   ]
 }

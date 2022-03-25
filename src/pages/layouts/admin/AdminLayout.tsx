@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 type Props = {};
 
@@ -23,8 +23,7 @@ const AdminLayout = (props: Props) => {
             </div>
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
               <div className="flex-shrink-0 flex items-center">
-                <img className="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow" />
-                <img className="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow" />
+                <Link className='navbar-brand text-gray-300 hover:bg-gray-700 hover:text-white' to={`/`}>BAKERY.COM</Link>
               </div>
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4">
@@ -59,8 +58,22 @@ const AdminLayout = (props: Props) => {
           </div>
         </div>
       </nav>
-
+      <footer className="bg-dark py-4 mt-auto">
+                <div className="container px-5">
+                  <div className="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div className="col-auto"><div className="small m-0 text-white">Copyright © Your Website 2021</div></div>
+                    <div className="col-auto">
+                      <a className="link-light small" href="#!">Privacy</a>
+                      <span className="text-white mx-1">·</span>
+                      <a className="link-light small" href="#!">Terms</a>
+                      <span className="text-white mx-1">·</span>
+                      <a className="link-light small" href="#!">Contact</a>
+                    </div>
+                  </div>
+                </div>
+              </footer>
     </div>
+    
   );
 };
 
