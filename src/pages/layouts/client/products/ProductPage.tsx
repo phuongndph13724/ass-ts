@@ -1,8 +1,13 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+import { ProductType } from '../../../../types/product';
 
-type Props = {}
+type ProductPageProps = {
+  data: ProductType[];
+  removeItem: (id: number) => void;
+};
 
-const ProductPage = (props: Props) => {
+const ProductPage = (props: ProductPageProps) => {
   return (
     <div className="h-auto py-10">
         <div className="shop-box-inner">
@@ -149,28 +154,29 @@ const ProductPage = (props: Props) => {
                                 <div className="mx-auto container py-8">
                                     <div className="flex flex-wrap items-center lg:justify-between justify-center">
                                         {/* Card 1 */}
-                                        <div tabIndex={0}
+                                    {props.data && props.data.map((product,index) => {
+                                        return (
+
+                                            <div key={index} tabIndex={0}
                                             className="border-r-[1px] border-black-800 px-[10px] mb-4 pt-2 focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
                                             <div>
                                                 <img alt="person capturing an image"
-                                                    src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png"
+                                                    src={product.img}
                                                     tabIndex={0} className="focus:outline-none w-full h-44" />
                                             </div>
                                             <div className="bg-white dark:bg-gray-800">
                                                 <div className="p-4">
                                                     <div className="flex items-center">
                                                         <h2 tabIndex={0}
-                                                            className="focus:outline-none text-lg dark:text-white font-semibold">
-                                                            iphone XS</h2>
+                                                            className="focus:outline-none text-l dark:text-white font-semibold">
+                                                            {product.name}</h2>
                                                         <p tabIndex={0}
                                                             className="focus:outline-none text-xs text-gray-600 dark:text-gray-200 pl-5">
                                                             4 days ago</p>
                                                     </div>
                                                     <p tabIndex={0}
                                                         className="focus:outline-none text-xs text-gray-600 dark:text-gray-200 mt-2">
-                                                        Tiêu đề iPhone XS is available in 3 colors with 64GB memory.
-                                                        Shoot
-                                                        amazing videos</p>
+                                                        {product.title}</p>
                                                     <div className="flex items-center justify-between pt-[2px]">
                                                         <div className="product-action d-flex justify-content-around">
                                                             <a href="#like" data-toggle="tooltip" data-placement="top"
@@ -188,11 +194,17 @@ const ProductPage = (props: Props) => {
                                                         </div>
                                                         <h3 tabIndex={0}
                                                             className="focus:outline-none text-indigo-700 text-xl font-semibold">
-                                                            $350</h3>
+                                                            ${product.price}</h3>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        );
+                                    })}
+                                        
+
+
+
                                     </div>
                                 </div>
                             </div>

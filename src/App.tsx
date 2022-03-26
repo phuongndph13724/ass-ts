@@ -64,7 +64,7 @@ function App() {
             <Route path="/" element={<WebsiteLayout />}>
               <Route index element={<Home />} />
               <Route path="product">
-                <Route index element={<ProductPage />} />
+                <Route index element={<ProductPage data={products} />} />
               </Route>
               <Route path='signin' element={<Signin/>}/>
               <Route path='signup' element={<Signup onAdd={onHandleAddUser}/>}/>
