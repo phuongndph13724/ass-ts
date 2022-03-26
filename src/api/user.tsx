@@ -2,7 +2,11 @@ import { UserType } from "../types/user";
 import instance from "./instance";
 
 export const signup = (user: UserType) => {
-  const url = `/users`;
+  const url = `/signup`;
+  return instance.post(url, user);
+};
+export const signin = (user: Pick<UserType, 'email' | 'password'>) => {
+  const url = `/signin`;
   return instance.post(url, user);
 };
 

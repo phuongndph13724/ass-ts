@@ -1,9 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import { UserType } from '../../../types/user';
 
-type Props = {}
+type WebsiteLayoutProps = {};
 
-const WebsiteLayout = (props: Props) => {
+
+const WebsiteLayout = (props: WebsiteLayoutProps) => {
+  const [error, setError] = useState();
+  const authEmail = async (email : string) => {
+    try {
+       const auth = await localStorage.getItem("user");
+       if(auth){
+         const email = document.querySelector('email');
+         if(email){
+           email.innerHTML = JSON.parse(auth).email;
+         }
+       }
+    console.log(auth);
+    } catch (error : any) {
+        console.log(error.response)
+        if(error.response.status === 400){
+          setError(error.response.data);
+        }
+    }
+  }
+  
+  const logout = document.querySelector("#logout");
+  if(logout){
+        logout.addEventListener('click', function(){
+          localStorage.removeItem('user');
+        })
+      }
   return (
     <div>
         <header>
@@ -23,14 +51,19 @@ const WebsiteLayout = (props: Props) => {
                       <li><a className="dropdown-item" href="blog-post.html">Blog Post</a></li>
                     </ul>
                   </li>
-                  <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">dacphuongotp@gmail.com</a>
+                    {localStorage.getItem('user')  && <a id='email' className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>}
+                   {/* chưa làm được */}
+                   
+                   {/* Hiện ra thông tin auth */}
+                   <li className="nav-item dropdown">
+                    <a id='email' className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                      <li><a className="dropdown-item" href="#">dacphuongotp@gmail.com</a></li>
-                      <li><a className="dropdown-item" href="#">Logout</a></li>
-                      <li><a className="dropdown-item" href="#">Signin</a></li>
-                      <li><a className="dropdown-item" href="signup.html">Signup</a></li>
+                      <li><Link id='email' className="dropdown-item" to={`#`}></Link></li>
+                      <li><Link className="dropdown-item" to={`/signin`}>Signin</Link></li>
+                      <li><Link className="dropdown-item" to={`signup`}>Signup</Link></li>
+                      <li><a id='logout' className="dropdown-item">Logout</a></li>
                     </ul>
+                  
                   </li>
                 </ul>
               </div>

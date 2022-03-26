@@ -15,7 +15,7 @@ import ProductAdd from './pages/layouts/admin/products/ProductAdd';
 import Signin from './pages/layouts/client/users/Signin';
 import Signup from './pages/layouts/client/users/Signup';
 import { UserType } from './types/user';
-import { signup } from './api/user';
+import { signin, signup } from './api/user';
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -48,18 +48,11 @@ function App() {
     setUsers([...users, data]);
     
   }
+  
   return (
     <div className="App">
       <hr></hr>
       <div>
-        {/* <header>
-          <ul>
-            <li><NavLink to="/">Home page</NavLink></li>
-          <li><NavLink to="/product">Product</NavLink></li>
-          <li><NavLink to="/about">About</NavLink></li>
-          <li><NavLink to="/admin/dashboard">Admin Dashboard</NavLink></li>
-          </ul>
-        </header> */}
         <main>
           <Routes>
             <Route path="/" element={<WebsiteLayout />}>
