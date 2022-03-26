@@ -11,8 +11,10 @@ const WebsiteLayout = (props: WebsiteLayoutProps) => {
   const authEmail = async (email : string) => {
     try {
        const auth = await localStorage.getItem("user");
+       console.log(auth);
        if(auth){
-         const email = document.querySelector('email');
+         const email = document.querySelector('#email');
+         
          if(email){
            email.innerHTML = JSON.parse(auth).email;
          }
@@ -63,7 +65,6 @@ const WebsiteLayout = (props: WebsiteLayoutProps) => {
                       <li><Link className="dropdown-item" to={`signup`}>Signup</Link></li>
                       <li><a id='logout' className="dropdown-item">Logout</a></li>
                     </ul>
-                  
                   </li>
                 </ul>
               </div>

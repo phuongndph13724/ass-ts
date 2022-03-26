@@ -1,29 +1,37 @@
-import React from 'react'
-import {useForm,SubmitHandler} from "react-hook-form"
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
+import { read, update } from '../../../../api/product';
 import { ProductType } from '../../../../types/product';
 
-type ProductAddProps = {
-    onAdd :(product : ProductType) => void
+type ProductEditProps = {
+    onUpdate : (product : ProductType) => void
+};
+type FormInputs ={
+    name : string,
+    img : string,
+    price : string,
+    title: string
 }
 
-type FormValues = {
-    name: string,
-    img: string,
-    price: number,
-    title: string,
-    category: string
-};
-
-
-const ProductAdd = (props: ProductAddProps) => {
-    const { register, handleSubmit, formState: { errors}} = useForm<FormValues>()
+const ProductEdit = (props: ProductEditProps) => {
+    const {id} = useParams();
+  const [products, setProducts] = useState<ProductType[]>([]);
+    const { register, handleSubmit, formState :{errors}, reset} = useForm<FormInputs>();
     const navigate = useNavigate();
-
-    const onSubmit: SubmitHandler<FormValues> = (data) => {
-        props.onAdd(data);
-        navigate('/admin/product');
-    }
+    const [error, setError] = useState();
+    useEffect(() => {
+        const getProduct = async () => {
+            const {data} = await read(id);
+            reset(data);
+        }
+        getProduct();
+    },[]);
+    
+    const onSubmit: SubmitHandler<FormInputs> = data => {    
+        props.onUpdate(data);
+        navigate("/admin/product");
+  };
   return (
     <div>
       <section className="py-5">
@@ -31,7 +39,7 @@ const ProductAdd = (props: ProductAddProps) => {
                 {/* Contact form*/}
                 <div className="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
                 <div className="text-center mb-5">
-                    <h1 className="fw-bolder">Thêm Sản Phẩm Mới</h1>
+                    <h1 className="fw-bolder">Cập nhật sản phẩm</h1>
                 </div>
                 <div className="row gx-5 justify-content-center">
                     <div className="col-lg-8 col-xl-6">
@@ -62,7 +70,7 @@ const ProductAdd = (props: ProductAddProps) => {
                         </label>
                         <div className="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                         </div>
-                        <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Thêm</button></div>
+                        <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Cập nhập</button></div>
                     </form>
                     </div>
                 </div>
@@ -70,7 +78,7 @@ const ProductAdd = (props: ProductAddProps) => {
             </div>
             </section>
     </div>
-  )
+  );
 }
 
-export default ProductAdd
+export default ProductEdit

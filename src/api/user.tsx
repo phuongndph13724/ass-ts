@@ -6,6 +6,7 @@ export const signup = (user: UserType) => {
   return instance.post(url, user);
 };
 export const signin = (user: Pick<UserType, 'email' | 'password'>) => {
+  // export const signin = (user : UserType) => {
   const url = `/signin`;
   return instance.post(url, user);
 };

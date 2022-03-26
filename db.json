@@ -1,40 +1,31 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Sản phẩm A",
+      "id": 2,
+      "name": "Sản phẩm B update",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
       "price": 1000,
       "title": "Mô tả sản phẩm A"
     },
     {
-      "id": 2,
-      "name": "Sản phẩm B",
+      "id": 3,
+      "name": "Sản phẩm C",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
       "price": 1000,
       "title": "Mô tả sản phẩm B"
     },
     {
-      "id": 3,
-      "name": "Sản phẩm C",
+      "id": 4,
+      "name": "Sản phẩm D",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
       "price": 1000,
       "title": "Mô tả sản phẩm C"
     },
     {
-      "id": 4,
-      "name": "Sản phẩm D",
-      "price": 1000,
-      "title": "Mô tả sản phẩm D"
-    },
-    {
-      "id": 5,
-      "name": "Sản phẩm E",
-      "price": 1000,
-      "title": "Mô tả sản phẩm E"
-    },
-    {
-      "name": "Sản Phẩm A dsadsa",
-      "price": "11111",
-      "title": "sadsadsadsadsa",
-      "id": 6
+      "name": "Sản Phẩm mới 01",
+      "price": "100000",
+      "title": "dasldklsadkl;askldsak;dá",
+      "id": 5
     }
   ],
   "users": [
