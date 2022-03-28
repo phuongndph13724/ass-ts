@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ProductType } from "../types/product";
 
-type Props = {};
+type HomeProps = {
+  data : ProductType[]
+};
 
-const Home = (props: Props) => {
+const Home = (props: HomeProps) => {
   return (
     <div className='d-flex flex-column h-100"'>
       <main className="flex-shrink-0">
@@ -56,15 +59,17 @@ const Home = (props: Props) => {
               <div className="mx-auto container py-8">
                 <div className="flex flex-wrap items-center lg:justify-between justify-center">
                   {/* Card 1 */}
-                  <div
+                  {props.data && props.data.map(product => {
+                    return (
+                      <div
                     tabIndex={0}
                     className="h-100 shadow border-0 px-[10px] mb-4 pt-2 focus:outline-none mx-2 w-72 xl:mb-0 mb-8"
                   >
                     <div>
-                      <Link to={"product/:id"}>
+                      <Link to={`product/:${product.id}`}>
                         <img
                           alt="person capturing an image"
-                          src="https://sb.nhattao.com/2018/07/10856194_IMG_1090.jpg"
+                          src={product.img}
                           tabIndex={0}
                           className="focus:outline-none w-full h-44"
                         />
@@ -72,20 +77,20 @@ const Home = (props: Props) => {
                     </div>
                     <div className="bg-white dark:bg-gray-800">
                       <div className="p-4">
-                        <Link to={"product/:id"}>
+                        <Link to={`product/:${product.id}`}>
                           <div className="flex items-center">
                             <h2
                               tabIndex={0}
                               className="focus:outline-none text-l dark:text-white font-semibold"
                             >
-                              Sản phẩm 1
+                              {product.name}
                             </h2>
                           </div>
                           <p
                             tabIndex={0}
                             className="focus:outline-none text-xs text-gray-600 dark:text-gray-200 mt-2"
                           >
-                            tiêu đề kdlsajdklsajdk
+                            {product.title}
                           </p>
                         </Link>
                         <div className="flex items-center justify-between pt-[2px]">
@@ -127,12 +132,15 @@ const Home = (props: Props) => {
                             tabIndex={0}
                             className="focus:outline-none text-indigo-700 text-xl font-semibold"
                           >
-                            giá
+                            {product.price}$
                           </h3>
                         </div>
                       </div>
                     </div>
                   </div>
+                    )
+                  })}
+                  
                   {/* Card 1 */}
                 </div>
               </div>
