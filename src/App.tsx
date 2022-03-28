@@ -17,6 +17,7 @@ import Signup from './pages/layouts/client/users/Signup';
 import { UserType } from './types/user';
 import { signin, signup } from './api/user';
 import ProductEdit from './pages/layouts/admin/products/ProductEdit';
+import ProductDetailPage from './pages/layouts/client/products/ProductDetailPage';
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -60,11 +61,13 @@ function App() {
       <hr></hr>
       <div>
         <main>
+          
           <Routes>
             <Route path="/" element={<WebsiteLayout />}>
               <Route index element={<Home />} />
               <Route path="product">
                 <Route index element={<ProductPage data={products} />} />
+                <Route path=':id' element={<ProductDetailPage/>}/>
               </Route>
               <Route path='signin' element={<Signin/>}/>
               <Route path='signup' element={<Signup onAdd={onHandleAddUser}/>}/>

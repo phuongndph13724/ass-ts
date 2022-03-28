@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { ProductType } from '../../../../types/product'
+import React from "react";
+import { Link } from "react-router-dom";
+import { ProductType } from "../../../../types/product";
 
 type ManagerProductProps = {
   data: ProductType[];
@@ -10,14 +10,14 @@ type ManagerProductProps = {
 const ManagerProduct = (props: ManagerProductProps) => {
   return (
     <div>
-      <h2>
-        <Link to={`/admin/product/add`}>Thêm sản phẩm mới</Link>
+      <h2 className=" my-4 mx-4 text-left">
+        <Link className="text-2xl" to={`/admin/product/add`}>Thêm sản phẩm mới</Link>
       </h2>
       <table className="table table-striped table-hover">
         <thead>
           <tr>
             <th>#</th>
-            <th className=''>Ảnh  sản phẩm</th>
+            <th className="">Ảnh sản phẩm</th>
             <th>Tên sản phẩm</th>
             <th>Mô tả sản phẩm</th>
             <th>Mô tả sản phẩm</th>
@@ -30,14 +30,28 @@ const ManagerProduct = (props: ManagerProductProps) => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    <img className="rounded mx-auto d-block" src={item.img} alt="" />
+                    <Link to={`/product/:${item.id}`}>
+                      <img
+                        className="rounded mx-auto d-block"
+                        src={item.img}
+                        alt=""
+                      />
+                    </Link>
                   </td>
-                  <td>{item.name}</td>
+
+                  <td>
+                    <Link to={`/product/:${item.id}`}>{item.name}</Link>
+                  </td>
                   <td>{item.price}</td>
                   <td>{item.title}</td>
                   <td>
                     <Link to={`/admin/product/${item.id}/edit`}>Edit</Link>
-                    <button className='' onClick={() => props.removeItem(item.id)}>Remove</button>
+                    <button
+                      className=""
+                      onClick={() => props.removeItem(item.id)}
+                    >
+                      Remove
+                    </button>
                   </td>
                 </tr>
               );
@@ -46,6 +60,6 @@ const ManagerProduct = (props: ManagerProductProps) => {
       </table>
     </div>
   );
-}
+};
 
-export default ManagerProduct
+export default ManagerProduct;

@@ -1,11 +1,18 @@
 {
   "products": [
     {
-      "id": 2,
+      "id": 1,
       "name": "Sản phẩm B update",
       "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
       "price": 1000,
       "title": "Mô tả sản phẩm A"
+    },
+    {
+      "id": 2,
+      "name": "Sản phẩm C",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
+      "price": 1000,
+      "title": "Mô tả sản phẩm B"
     },
     {
       "id": 3,
@@ -16,16 +23,59 @@
     },
     {
       "id": 4,
-      "name": "Sản phẩm D",
+      "name": "Sản phẩm C",
       "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
       "price": 1000,
-      "title": "Mô tả sản phẩm C"
+      "title": "Mô tả sản phẩm B"
     },
     {
-      "name": "Sản Phẩm mới 01",
-      "price": "100000",
-      "title": "dasldklsadkl;askldsak;dá",
-      "id": 5
+      "id": 5,
+      "name": "Sản phẩm C",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
+      "price": 1000,
+      "title": "Mô tả sản phẩm B"
+    },
+    {
+      "id": 6,
+      "name": "Sản phẩm C",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
+      "price": 1000,
+      "title": "Mô tả sản phẩm B"
+    },
+    {
+      "id": 3,
+      "name": "Sản phẩm C",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
+      "price": 1000,
+      "title": "Mô tả sản phẩm B"
+    },
+    {
+      "id": 7,
+      "name": "Sản phẩm C",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
+      "price": 1000,
+      "title": "Mô tả sản phẩm B"
+    },
+    {
+      "id": 8,
+      "name": "Sản phẩm C",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
+      "price": 1000,
+      "title": "Mô tả sản phẩm B"
+    },
+    {
+      "id": 9,
+      "name": "Sản phẩm C",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
+      "price": 1000,
+      "title": "Mô tả sản phẩm B"
+    },
+    {
+      "id": 10,
+      "name": "Sản phẩm C asdsdasd adsdsa đ dsa dsa dá",
+      "img": "https://cdn.tuk.dev/assets/templates/classified/Bitmap%20(1).png",
+      "price": 1000,
+      "title": "Mô tả sản phẩm B"
     }
   ],
   "users": [
@@ -53,5 +103,24 @@
       "address": "Bắc Ninh",
       "id": 3
     }
+  ],
+    "posts" : [
+      {
+        "id" : 1,
+        "name" : "Bài viết mới",
+        "img" :"sadsada",
+        "title" : "Blog title post",
+        "desc" : "Some quick example text to build on the card title and make up the bulk of the card's content"
+      }
+  ],
+  "sliders" : [
+      {
+        "id" : 1,
+        "name" : "Bài viết mới",
+        "img" :"sadsada",
+        "title" : "Blog title post",
+        "desc" : "Some quick example text to build on the card title and make up the bulk of the card's content"
+      }
   ]
+
 }

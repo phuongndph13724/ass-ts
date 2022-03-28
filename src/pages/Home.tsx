@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 type Props = {};
 
@@ -38,7 +39,7 @@ const Home = (props: Props) => {
               <div className="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
                 <img
                   className="img-fluid rounded-3 my-5"
-                  src="https://dummyimage.com/600x400/343a40/6c757d"
+                  src="https://cdn.tgdd.vn/Files/2018/12/15/1138288/photo-1534802046520-4f27db7f3ae5_800x450.jpg"
                   alt="..."
                 />
               </div>
@@ -46,90 +47,99 @@ const Home = (props: Props) => {
           </div>
         </header>
         {/* Features section*/}
-        <section className="py-5 bg-secondary bg-opacity-50" id="features">
-          <div className="container px-5 my-5">
-            <div className="row  gx-5">
-              <div className="col-lg-4 mb-5 mb-lg-0">
-                <h2 className="fw-bolder mb-0">
-                  A better way to start building.
-                </h2>
-              </div>
-              <div className="col-lg-8">
-                <div className="row gx-5 row-cols-1 row-cols-md-2">
-                  <div className="col mb-5 h-100">
-                    <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                      <i className="bi bi-collection" />
+        <hr className="mx-20" />
+        <section className="py-5 bg-while bg-opacity-50" id="features">
+          <div className="right-product-box">
+            <div tabIndex={0} className="focus:outline-none">
+              {/* Remove py-8 */}
+              <h1 className="display-5 fw-bolder text-black mb-2">Product</h1>
+              <div className="mx-auto container py-8">
+                <div className="flex flex-wrap items-center lg:justify-between justify-center">
+                  {/* Card 1 */}
+                  <div
+                    tabIndex={0}
+                    className="h-100 shadow border-0 px-[10px] mb-4 pt-2 focus:outline-none mx-2 w-72 xl:mb-0 mb-8"
+                  >
+                    <div>
+                      <Link to={"product/:id"}>
+                        <img
+                          alt="person capturing an image"
+                          src="https://sb.nhattao.com/2018/07/10856194_IMG_1090.jpg"
+                          tabIndex={0}
+                          className="focus:outline-none w-full h-44"
+                        />
+                      </Link>
                     </div>
-                    <h2 className="h5">Featured title</h2>
-                    <p className="mb-0">
-                      Paragraph of text beneath the heading to explain the
-                      heading. Here is just a bit more text.
-                    </p>
-                  </div>
-                  <div className="col mb-5 h-100">
-                    <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                      <i className="bi bi-building" />
+                    <div className="bg-white dark:bg-gray-800">
+                      <div className="p-4">
+                        <Link to={"product/:id"}>
+                          <div className="flex items-center">
+                            <h2
+                              tabIndex={0}
+                              className="focus:outline-none text-l dark:text-white font-semibold"
+                            >
+                              Sản phẩm 1
+                            </h2>
+                          </div>
+                          <p
+                            tabIndex={0}
+                            className="focus:outline-none text-xs text-gray-600 dark:text-gray-200 mt-2"
+                          >
+                            tiêu đề kdlsajdklsajdk
+                          </p>
+                        </Link>
+                        <div className="flex items-center justify-between pt-[2px]">
+                          <div className="product-action d-flex justify-content-around">
+                            <a
+                              href="#like"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Yêu thích sản phẩm"
+                            >
+                              <i
+                                className="fas fa-heart px-2"
+                                style={{ color: "red" }}
+                              />
+                            </a>
+                            <span className="saperator">|</span>
+                            <a
+                              href="#view"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Xem chi tiết"
+                            >
+                              <i className="fas fa-eye px-2" />
+                            </a>
+                            <span className="saperator">|</span>
+                            <a
+                              href="#cart"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              title="Thêm vào giỏ hàng"
+                            >
+                              <i
+                                className="fas fa-cart-plus px-2"
+                                style={{ color: "blue" }}
+                              />
+                            </a>
+                          </div>
+                          <h3
+                            tabIndex={0}
+                            className="focus:outline-none text-indigo-700 text-xl font-semibold"
+                          >
+                            giá
+                          </h3>
+                        </div>
+                      </div>
                     </div>
-                    <h2 className="h5">Featured title</h2>
-                    <p className="mb-0">
-                      Paragraph of text beneath the heading to explain the
-                      heading. Here is just a bit more text.
-                    </p>
                   </div>
-                  <div className="col mb-5 mb-md-0 h-100">
-                    <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                      <i className="bi bi-toggles2" />
-                    </div>
-                    <h2 className="h5">Featured title</h2>
-                    <p className="mb-0">
-                      Paragraph of text beneath the heading to explain the
-                      heading. Here is just a bit more text.
-                    </p>
-                  </div>
-                  <div className="col h-100">
-                    <div className="feature bg-primary bg-gradient text-white rounded-3 mb-3">
-                      <i className="bi bi-toggles2" />
-                    </div>
-                    <h2 className="h5">Featured title</h2>
-                    <p className="mb-0">
-                      Paragraph of text beneath the heading to explain the
-                      heading. Here is just a bit more text.
-                    </p>
-                  </div>
+                  {/* Card 1 */}
                 </div>
               </div>
             </div>
           </div>
         </section>
-        {/* Testimonial section*/}
-        <div className="py-5 bg-light">
-          <div className="container px-5 my-5">
-            <div className="row gx-5 justify-content-center">
-              <div className="col-lg-10 col-xl-7">
-                <div className="text-center">
-                  <div className="fs-4 mb-4 fst-italic">
-                    "Working with Start Bootstrap templates has saved me tons of
-                    development time when building new projects! Starting with a
-                    Bootstrap template just makes things easier!"
-                  </div>
-                  <div className="d-flex align-items-center justify-content-center">
-                    <img
-                      className="rounded-circle me-3"
-                      src="https://dummyimage.com/40x40/ced4da/6c757d"
-                      alt="..."
-                    />
-                    <div className="fw-bold">
-                      Tom Ato
-                      <span className="fw-bold text-primary mx-1">/</span>
-                      CEO, Pomodoro
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Blog preview section*/}
+        <hr className="mx-20" />
         <section className="py-5">
           <div className="container px-5 my-5">
             <div className="row gx-5 justify-content-center">
@@ -148,7 +158,7 @@ const Home = (props: Props) => {
                 <div className="card h-100 shadow border-0">
                   <img
                     className="card-img-top"
-                    src="https://dummyimage.com/600x350/ced4da/6c757d"
+                    src="https://cdn.tgdd.vn/Files/2018/12/15/1138288/photo-1534802046520-4f27db7f3ae5_800x450.jpg"
                     alt="..."
                   />
                   <div className="card-body p-4">
@@ -157,7 +167,7 @@ const Home = (props: Props) => {
                     </div>
                     <a
                       className="text-decoration-none link-dark stretched-link"
-                      href="#!"
+                      href="product"
                     >
                       <h5 className="card-title mb-3">Blog post title</h5>
                     </a>
@@ -189,7 +199,7 @@ const Home = (props: Props) => {
                 <div className="card h-100 shadow border-0">
                   <img
                     className="card-img-top"
-                    src="https://dummyimage.com/600x350/adb5bd/495057"
+                    src="https://cdn.tgdd.vn/Files/2018/12/15/1138288/photo-1534802046520-4f27db7f3ae5_800x450.jpg"
                     alt="..."
                   />
                   <div className="card-body p-4">
@@ -233,7 +243,7 @@ const Home = (props: Props) => {
                 <div className="card h-100 shadow border-0">
                   <img
                     className="card-img-top"
-                    src="https://dummyimage.com/600x350/6c757d/343a40"
+                    src="https://cdn.tgdd.vn/Files/2018/12/15/1138288/photo-1534802046520-4f27db7f3ae5_800x450.jpg"
                     alt="..."
                   />
                   <div className="card-body p-4">
@@ -279,11 +289,11 @@ const Home = (props: Props) => {
               <div className="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
                 <div className="mb-4 mb-xl-0">
                   <div className="fs-3 fw-bold text-white">
-                    New products, delivered to you.
+                    Đăng ký ngay để nhận thông báo từ chúng tôi.
                   </div>
-                  <div className="text-white-50">
+                  {/* <div className="text-white-50">
                     Sign up for our newsletter for the latest updates.
-                  </div>
+                  </div> */}
                 </div>
                 <div className="ms-xl-4">
                   <div className="input-group mb-2">
@@ -299,11 +309,12 @@ const Home = (props: Props) => {
                       id="button-newsletter"
                       type="button"
                     >
-                      Sign up
+                      Đăng ký
                     </button>
                   </div>
                   <div className="small text-white-50">
-                    We care about privacy, and will never share your data.
+                    Chúng tôi quan tâm đến quyền riêng tư và sẽ không bao giờ
+                    chia sẻ dữ liệu của bạn.
                   </div>
                 </div>
               </div>
