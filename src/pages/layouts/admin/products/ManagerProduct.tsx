@@ -4,14 +4,16 @@ import { ProductType } from "../../../../types/product";
 
 type ManagerProductProps = {
   data: ProductType[];
-  removeItem: (id: number) => void;
+  onRemoveItem: (id: number) => void;
 };
 
-const ManagerProduct = (props: ManagerProductProps) => {
+const ManagerProduct = (props : ManagerProductProps) => {
   return (
     <div>
       <h2 className=" my-4 mx-4 text-left">
-        <Link className="text-2xl" to={`/admin/product/add`}>Thêm sản phẩm mới</Link>
+        <Link className="text-2xl" to={`/admin/product/add`}>
+          Thêm sản phẩm mới
+        </Link>
       </h2>
       <table className="table table-striped table-hover">
         <thead>
@@ -46,10 +48,7 @@ const ManagerProduct = (props: ManagerProductProps) => {
                   <td>{item.title}</td>
                   <td>
                     <Link to={`/admin/product/${item.id}/edit`}>Edit</Link>
-                    <button
-                      className=""
-                      onClick={() => props.removeItem(item.id)}
-                    >
+                    <button className="" onClick={() => props.onRemoveItem(item.id)}>
                       Remove
                     </button>
                   </td>

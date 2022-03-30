@@ -1,6 +1,7 @@
 import React from 'react'
 import {useForm, SubmitHandler} from "react-hook-form"
 import {useNavigate} from 'react-router-dom'
+import { signup } from '../../../../api/user';
 import { UserType } from '../../../../types/user';
 
 type SignupProps = {
@@ -20,9 +21,8 @@ const Signup = (props: SignupProps) => {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    props.onAdd(data);
-    console.log(data);
-    navigate("/signin");
+    signup(data);
+    // navigate("/signin");
   }
   return (
     <div>

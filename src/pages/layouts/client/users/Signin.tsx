@@ -4,10 +4,11 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { UserType } from "../../../../types/user";
 import { signin } from "../../../../api/user";
+import { authenticate } from "../../../../untils/localStorage";
 
 type FormValues = {
-  email: string;
-  password: string;
+  email: string,
+  password: string
 };
 
 const Signin = () => {
@@ -21,14 +22,10 @@ const Signin = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      const response = await signin(data);
-      if(response.data){
-        localStorage.setItem("user", JSON.stringify(response.data));
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-      }
-      console.log(response.data)
+      const {data : user} = await signin(data);
+      authenticate(user, () => navigate("/"));
+
+      // console.log(response.data)
     } catch (error: any) {
       console.log(error.response)
       if(error.response.status  === 400) {

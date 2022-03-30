@@ -18,6 +18,7 @@ import { UserType } from './types/user';
 import { signin, signup } from './api/user';
 import ProductEdit from './pages/layouts/admin/products/ProductEdit';
 import ProductDetailPage from './pages/layouts/client/products/ProductDetailPage';
+import PrivateRouter from './components/PrivateRouter';
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -72,11 +73,11 @@ function App() {
               <Route path='signin' element={<Signin/>}/>
               <Route path='signup' element={<Signup onAdd={onHandleAddUser}/>}/>
             </Route>
-            <Route path="admin" element={<AdminLayout />}>
+            <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
               <Route index element={<Navigate to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="product">
-                <Route index element={<ManagerProduct  data={products}  removeItem={removeItem}/>}/>
+                <Route index element={<ManagerProduct  data={products}  onRemoveItem={removeItem}/>}/>
                 <Route  path="add"  element={<ProductAdd onAdd={onHandleAdd} />}/>
                 <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate}/>}/>
               </Route>

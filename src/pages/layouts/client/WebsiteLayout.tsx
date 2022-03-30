@@ -53,17 +53,13 @@ const WebsiteLayout = (props: WebsiteLayoutProps) => {
                       <li><a className="dropdown-item" href="blog-post.html">Blog Post</a></li>
                     </ul>
                   </li>
-                    {localStorage.getItem('user')  && <a id='email' className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>}
-                   {/* chưa làm được */}
-                   
-                   {/* Hiện ra thông tin auth */}
                    <li className="nav-item dropdown">
-                    <a id='email' className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                    <a id='email' className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">User</a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                      <li><Link id='email' className="dropdown-item" to={`#`}></Link></li>
-                      <li><Link className="dropdown-item" to={`/signin`}>Signin</Link></li>
+                      <li><Link id='email' className="dropdown-item" to={`#`}>User</Link></li>
+                       {!localStorage.getItem('user') &&<li><Link className="dropdown-item" to={`/signin`}>Signin</Link></li>}
                       <li><Link className="dropdown-item" to={`signup`}>Signup</Link></li>
-                      <li><a id='logout' className="dropdown-item">Logout</a></li>
+                      {localStorage.getItem('user')  && <li><a id='logout' className="dropdown-item">Logout</a></li>}
                     </ul>
                   </li>
                 </ul>
