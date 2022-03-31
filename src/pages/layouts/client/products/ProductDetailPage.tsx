@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { read } from "../../../../api/product";
@@ -9,11 +9,12 @@ type ProductDetailPageProps = {
 };
 
 const ProductDetailPage = (props: ProductDetailPageProps) => {
-  const {_id} = useParams();
+  const {id} = useParams();
+  const [product, setProduct] = useState<ProductType[]>([])
   useEffect(() => {
     const getProduct = async () => {
-      const {data} = await read(_id);
-      console.log(data);
+      const {data} = await read(id);
+      setProduct(data)
     }
     getProduct();
   },[]);
@@ -23,7 +24,6 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
         <div className="container px-5">
           <div className="card-body">
             <div className="card-content">
-
               <div className="row">
                 <div className="col-sm-4 col-12">
                   <div className="product-img d-flex align-items-center">
@@ -31,62 +31,68 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                     <img
                       alt="Card image cap"
                       className="img-fluid mb-1"
-                      src="#"
+                      src={product?.img}
                     />
                   </div>
                 </div>
                 <div className="col-sm-8 col-12">
                   <div className="title-area clearfix">
                     <h2 className="product-title float-left text-3xl pb-4">
+                      {product?.name}
                     </h2>
                   </div>
                   <div className="price-reviews clearfix">
                     <span className="price-box float-left ml-4 pb-2">
                       <span className="price h4 pb-2 my-2 text-blue-600">
-                        $250
+                        {product?.price}$
                       </span>
                       <br />
-                      <span className="old-price h4 my-4 text-black">$500</span>
+                      <span className="old-price h4 my-4 text-black">
+                        {product?.price}$
+                      </span>
                     </span>
                   </div>
                   {/* Product Information */}
                   <div className="product-info">
-                    <p>
-                      Chocolate cake croissant lollipop danish macaroon. Gummies
-                      candy jelly-o chocolate tart jelly-o sesame snaps jelly-o.
-                      Muffin cake dessert biscuit. Chupa chups jelly beans
-                      powder chocolate cake lollipop cake donut toffee sugar
-                      plum. Sweet roll liquorice halvah cupcake chocolate apple
-                      pie cheesecake pastry wafer. Cheesecake cupcake sugar plum
-                      apple pie.
-                    </p>
+                    <p>{product?.title}$</p>
                   </div>
                   {/* Product Information Ends*/}
                   {/* Color Options */}
                   <div className="row py-8">
                     <div className="col-lg-6 flex">
                       <div className="product-options color-options mb-2">
-                        
                         <ul className="flex">
-                            <li className="p-2">Color :</li>
+                          <li className="p-2">Color :</li>
                           <li className="p-2">
                             <a href="#">
-                                <i className="border  border-dark  fas fa-square"  style={{ color: "white" }}></i>
+                              <i
+                                className="border  border-dark  fas fa-square"
+                                style={{ color: "white" }}
+                              ></i>
                             </a>
                           </li>
                           <li className="p-2">
                             <a href="#">
-                              <i className="fas fa-square"  style={{ color: "drack" }}></i>
+                              <i
+                                className="fas fa-square"
+                                style={{ color: "drack" }}
+                              ></i>
                             </a>
                           </li>
                           <li className="p-2">
                             <a href="#">
-                              <i className="fas fa-square" style={{ color: "red" }}></i>
+                              <i
+                                className="fas fa-square"
+                                style={{ color: "red" }}
+                              ></i>
                             </a>
                           </li>
                           <li className="p-2">
                             <a href="#">
-                              <i className="fas fa-square"  style={{ color: "gray" }}></i>
+                              <i
+                                className="fas fa-square"
+                                style={{ color: "gray" }}
+                              ></i>
                             </a>
                           </li>
                         </ul>
@@ -190,10 +196,7 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                     </div>
                     <div className="col-xl-5 col-lg-5 col-md-12 mb-2">
                       <div className="product-buttons pl-2">
-                        <a
-                          className="mx-2 btn btn-danger btn-sm"
-                          href=""
-                        >
+                        <a className="mx-2 btn btn-danger btn-sm" href="">
                           Add to Cart
                         </a>
                         <a
@@ -207,7 +210,6 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
