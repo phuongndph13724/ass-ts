@@ -16,7 +16,7 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                     <img
                       alt="Card image cap"
                       className="img-fluid mb-1"
-                      src="https://cdn.tgdd.vn/Files/2018/12/15/1138288/photo-1534802046520-4f27db7f3ae5_800x450.jpg"
+                      src="#"
                     />
                   </div>
                 </div>
@@ -54,28 +54,25 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                       <div className="product-options color-options mb-2">
                         
                         <ul className="flex">
-                            <li>Color :</li>
-                          <li>
-                            <i className="fas fa-square"></i>
-                          </li>
-                          <li>
+                            <li className="p-2">Color :</li>
+                          <li className="p-2">
                             <a href="#">
-                              <i className="fas fa-square"></i>
+                                <i className="border  border-dark  fas fa-square"  style={{ color: "white" }}></i>
                             </a>
                           </li>
-                          <li>
+                          <li className="p-2">
                             <a href="#">
-                              <i className="fas fa-square"></i>
+                              <i className="fas fa-square"  style={{ color: "drack" }}></i>
                             </a>
                           </li>
-                          <li>
+                          <li className="p-2">
                             <a href="#">
-                              <i className="fas fa-square"></i>
+                              <i className="fas fa-square" style={{ color: "red" }}></i>
                             </a>
                           </li>
-                          <li>
+                          <li className="p-2">
                             <a href="#">
-                              <i className="fas fa-square"></i>
+                              <i className="fas fa-square"  style={{ color: "gray" }}></i>
                             </a>
                           </li>
                         </ul>
@@ -111,7 +108,7 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                             </a>
                           </li>
                           <li className="ml-2">
-                            <a className="p-1 border rounded" href="#">
+                            <a className="p-1 border rounded bg-white" href="#">
                               S
                             </a>
                           </li>
@@ -135,7 +132,7 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                         <div className="input-group">
                           <input
                             className="text-center count touchspin border border-1 rounded"
-                            type="text"
+                            type="number"
                             defaultValue={1}
                           />
                         </div>
@@ -180,17 +177,15 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                     <div className="col-xl-5 col-lg-5 col-md-12 mb-2">
                       <div className="product-buttons pl-2">
                         <a
-                          className="btn btn-danger btn-sm"
-                          href="ecommerce-shopping-cart.html"
+                          className="mx-2 btn btn-danger btn-sm"
+                          href=""
                         >
-                          <i className="la la-shopping-cart"></i>
                           Add to Cart
                         </a>
                         <a
                           className="btn btn-info btn-sm"
                           href="ecommerce-checkout.html"
                         >
-                          <i className="la la-flash"></i>
                           Buy Now
                         </a>
                       </div>

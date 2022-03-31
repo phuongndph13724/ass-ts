@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Navigate, Outlet } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import { UserType } from '../../../types/user';
 

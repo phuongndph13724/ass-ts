@@ -4,7 +4,6 @@ import { ProductType } from "../../../../types/product";
 
 type ProductPageProps = {
   data: ProductType[];
-  removeItem: (id: number) => void;
 };
 
 const ProductPage = (props: ProductPageProps) => {
@@ -232,7 +231,7 @@ const ProductPage = (props: ProductPageProps) => {
                               tabIndex={0}
                               className="h-100 shadow border-0 px-[10px] mb-4 pt-2 focus:outline-none mx-2 w-72 xl:mb-0 mb-8"
                             >
-                              <Link to={`:${product.id}`}>
+                              <Link to={`:${product._id}`}>
                                 <div>
                                   <img
                                     alt="person capturing an image"
@@ -244,7 +243,7 @@ const ProductPage = (props: ProductPageProps) => {
                               </Link>
                               <div className="bg-white dark:bg-gray-800">
                                 <div className="p-4">
-                                  <Link to={`:${product.id}`}>
+                                  <Link to={`:${product._id}`}>
                                     <div className="flex items-center">
                                       <h2
                                         tabIndex={0}
@@ -274,14 +273,14 @@ const ProductPage = (props: ProductPageProps) => {
                                         />
                                       </a>
                                       <span className="saperator">|</span>
-                                      <a
-                                        href="#view"
+                                      <Link
                                         data-toggle="tooltip"
                                         data-placement="top"
-                                        title="Xem chi tiết"
+                                        title="Yêu thích sản phẩm"
+                                        to={`product/:${product._id}`}
                                       >
                                         <i className="fas fa-eye px-2" />
-                                      </a>
+                                      </Link>
                                       <span className="saperator">|</span>
                                       <a
                                         href="#cart"

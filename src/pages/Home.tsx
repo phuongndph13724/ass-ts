@@ -66,7 +66,7 @@ const Home = (props: HomeProps) => {
                     className="h-100 shadow border-0 px-[10px] mb-4 pt-2 focus:outline-none mx-2 w-72 xl:mb-0 mb-8"
                   >
                     <div>
-                      <Link to={`product/:${product.id}`}>
+                      <Link to={`product/:${product._id}`}>
                         <img
                           alt="person capturing an image"
                           src={product.img}
@@ -77,7 +77,7 @@ const Home = (props: HomeProps) => {
                     </div>
                     <div className="bg-white dark:bg-gray-800">
                       <div className="p-4">
-                        <Link to={`product/:${product.id}`}>
+                        <Link to={`product/:${product._id}`}>
                           <div className="flex items-center">
                             <h2
                               tabIndex={0}
@@ -107,14 +107,11 @@ const Home = (props: HomeProps) => {
                               />
                             </a>
                             <span className="saperator">|</span>
-                            <a
-                              href="#view"
-                              data-toggle="tooltip"
+                            <Link data-toggle="tooltip"
                               data-placement="top"
-                              title="Xem chi tiết"
-                            >
-                              <i className="fas fa-eye px-2" />
-                            </a>
+                              title="Yêu thích sản phẩm"
+                              to={`product/:${product._id}`}><i className="fas fa-eye px-2" />
+                              </Link>
                             <span className="saperator">|</span>
                             <a
                               href="#cart"

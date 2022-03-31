@@ -22,7 +22,7 @@ const Signup = (props: SignupProps) => {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     signup(data);
-    // navigate("/signin");
+    navigate("/signin");
   }
   return (
     <div>

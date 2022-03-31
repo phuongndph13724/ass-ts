@@ -4,7 +4,7 @@ import { ProductType } from "../../../../types/product";
 
 type ManagerProductProps = {
   data: ProductType[];
-  onRemoveItem: (id: number) => void;
+  onRemoveItem: (_id: number) => void;
 };
 
 const ManagerProduct = (props : ManagerProductProps) => {
@@ -32,9 +32,9 @@ const ManagerProduct = (props : ManagerProductProps) => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    <Link to={`/product/:${item.id}`}>
+                    <Link to={`/product/:${item._id}`}>
                       <img
-                        className="rounded mx-auto d-block"
+                        className="w-60 rounded mx-auto d-block"
                         src={item.img}
                         alt=""
                       />
@@ -42,13 +42,13 @@ const ManagerProduct = (props : ManagerProductProps) => {
                   </td>
 
                   <td>
-                    <Link to={`/product/:${item.id}`}>{item.name}</Link>
+                    <Link to={`/product/:${item._id}`}>{item.name}</Link>
                   </td>
                   <td>{item.price}</td>
                   <td>{item.title}</td>
                   <td>
-                    <Link to={`/admin/product/${item.id}/edit`}>Edit</Link>
-                    <button className="" onClick={() => props.onRemoveItem(item.id)}>
+                    <Link to={`/admin/product/${item._id}/edit`}>Edit</Link>
+                    <button className="" onClick={() => props.onRemoveItem(item._id)}>
                       Remove
                     </button>
                   </td>
