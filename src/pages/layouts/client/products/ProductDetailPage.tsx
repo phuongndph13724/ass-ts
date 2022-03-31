@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { read } from "../../../../api/product";
+import { ProductType } from "../../../../types/product";
 
-type ProductDetailPageProps = {};
+type ProductDetailPageProps = {
+  data : ProductType[]
+};
 
 const ProductDetailPage = (props: ProductDetailPageProps) => {
+  const {_id} = useParams();
+  useEffect(() => {
+    const getProduct = async () => {
+      const {data} = await read(_id);
+      console.log(data);
+    }
+    getProduct();
+  },[]);
   return (
     <div>
       <section className="py-[117px]">
         <div className="container px-5">
           <div className="card-body">
             <div className="card-content">
+
               <div className="row">
                 <div className="col-sm-4 col-12">
                   <div className="product-img d-flex align-items-center">
@@ -23,7 +38,6 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                 <div className="col-sm-8 col-12">
                   <div className="title-area clearfix">
                     <h2 className="product-title float-left text-3xl pb-4">
-                      Fitbit Alta HR Special Edition
                     </h2>
                   </div>
                   <div className="price-reviews clearfix">
@@ -193,6 +207,7 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

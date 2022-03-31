@@ -59,14 +59,14 @@ const Home = (props: HomeProps) => {
               <div className="mx-auto container py-8">
                 <div className="flex flex-wrap items-center lg:justify-between justify-center">
                   {/* Card 1 */}
-                  {props.data && props.data.map(product => {
+                  {props.data && props.data.map((product,index) => {
                     return (
-                      <div
+                      <div key={index}
                     tabIndex={0}
                     className="h-100 shadow border-0 px-[10px] mb-4 pt-2 focus:outline-none mx-2 w-72 xl:mb-0 mb-8"
                   >
                     <div>
-                      <Link to={`product/:${product._id}`}>
+                      <Link to={`product/${product._id}`}>
                         <img
                           alt="person capturing an image"
                           src={product.img}
@@ -77,7 +77,7 @@ const Home = (props: HomeProps) => {
                     </div>
                     <div className="bg-white dark:bg-gray-800">
                       <div className="p-4">
-                        <Link to={`product/:${product._id}`}>
+                        <Link to={`product/${product._id}`}>
                           <div className="flex items-center">
                             <h2
                               tabIndex={0}

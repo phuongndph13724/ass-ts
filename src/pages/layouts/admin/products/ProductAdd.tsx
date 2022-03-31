@@ -60,7 +60,6 @@ const ProductAdd = (props: ProductAddProps) => {
                         <label htmlFor="img">
                             <img className="rounded mx-auto d-block" src='' alt="" />
                         </label>
-                        <div className="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                         </div>
                         <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Thêm</button></div>
                     </form>

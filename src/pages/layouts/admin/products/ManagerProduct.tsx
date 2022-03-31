@@ -32,7 +32,7 @@ const ManagerProduct = (props : ManagerProductProps) => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    <Link to={`/product/:${item._id}`}>
+                    <Link to={`/product/${item._id}`}>
                       <img
                         className="w-60 rounded mx-auto d-block"
                         src={item.img}
@@ -42,7 +42,7 @@ const ManagerProduct = (props : ManagerProductProps) => {
                   </td>
 
                   <td>
-                    <Link to={`/product/:${item._id}`}>{item.name}</Link>
+                    <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </td>
                   <td>{item.price}</td>
                   <td>{item.title}</td>

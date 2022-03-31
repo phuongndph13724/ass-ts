@@ -1,39 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import { read, update } from '../../../../api/product';
-import { ProductType } from '../../../../types/product';
+import { readCates } from '../../../../api/category';
+import { CategoryType } from '../../../../types/category';
 
-type ProductEditProps = {
-    onUpdate : (product : ProductType) => void
+type CategoryEditProps = {
+    updateCates : (category : CategoryType) => void
 };
-type FormInputs ={
+
+type FormInputs = {
     name : string,
-    img : string,
-    price : number,
-    title: string
+    img : string
 }
 
-const ProductEdit = (props: ProductEditProps) => {
+const CategoryEdit = (props: CategoryEditProps) => {
     const {_id} = useParams();
-  const [products, setProducts] = useState<ProductType[]>([]);
+    const [products, setProducts] = useState<CategoryType[]>([]);
     const { register, handleSubmit, formState :{errors}, reset} = useForm<FormInputs>();
     const navigate = useNavigate();
     const [error, setError] = useState();
     useEffect(() => {
         const getProduct = async () => {
-            const {data} = await read(_id);
+            const {data} = await readCates(_id);
             reset(data);
         }
         getProduct();
     },[]);
     
     const onSubmit: SubmitHandler<FormInputs> = data => {    
-        props.onUpdate(data);
+        props.updateCates(data);
         navigate("/admin/product");
-  };
-  return (
-    <div>
+  }
+  return <div>
       <section className="py-5">
             <div className="container px-5">
                 {/* Contact form*/}
@@ -50,19 +48,6 @@ const ProductEdit = (props: ProductEditProps) => {
                         {errors.name && errors.name.type === "required" && <span>Nhập vào tên sản phẩm</span>}
                         <label htmlFor="name">Tên sản phẩm</label>
                         </div>
-
-                        <div className="form-floating mb-3">
-                        <input  {...register('price',{required: true})}  className="form-control" id="price" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                        {errors.name && errors.name.type === "required" && <span>Nhập vào giá sản phẩm</span>}
-                        <label htmlFor="name">Giá sản phẩm</label>
-                        </div>
-
-                        <div className="form-floating mb-3">
-                        <input  {...register('title',{required: true})}  className="form-control" id="title" type="text" placeholder="Enter your name..." data-sb-validations="required" />
-                        {errors.name && errors.name.type === "required" && <span>Nhập vào mô tả sản phẩm</span>}
-                        <label htmlFor="name">Mô tả</label>
-                        </div>
-
                         <div className="form-floating mb-3">
                         <input className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
                         <label htmlFor="img">
@@ -77,8 +62,7 @@ const ProductEdit = (props: ProductEditProps) => {
                 </div>
             </div>
             </section>
-    </div>
-  );
-}
+  </div>;
+};
 
-export default ProductEdit
+export default CategoryEdit
