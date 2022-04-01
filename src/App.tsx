@@ -29,14 +29,14 @@ function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [users, setUsers] = useState<UserType[]>([]);
   // const [count, setCount] = useState<number>(0);
-  
+
   useEffect(() => {
     const getProducts = async () => {
-      const {data} = await list();
+      const { data } = await list();
       setProducts(data);
     }
     getProducts();
-  },[])
+  }, [])
   const removeItem = async (id: number) => {
     // xoa tren API
     const { data } = await remove(id);
@@ -46,7 +46,7 @@ function App() {
   }
   const onHandleAdd = async (product: ProductType) => {
     // call api
-    const { data} = await add(product);
+    const { data } = await add(product);
     console.log(data);
     setProducts([...products, data])
   }
@@ -54,14 +54,14 @@ function App() {
     const { data } = await update(product);
     setProducts(products.map((item) => (item._id == data._id ? data : item)));
   };
-// end product
+  // end product
 
 
-  const onHandleAddUser = async ( user : UserType) => {
-    const {data} = await signup(user);
+  const onHandleAddUser = async (user: UserType) => {
+    const { data } = await signup(user);
     console.log(data);
     setUsers([...users, data]);
-    
+
   }
   // end user
 
@@ -78,34 +78,34 @@ function App() {
     const { data } = await removeCates(id);
     data && setCategorys(categorys.filter((item) => item._id !== data._id));
   };
-   const onHandleAddCates = async (category: ProductType) => {
-     // call api
-     const { data } = await createCates(category);
-     setProducts([...categorys, data]);
-   };
-   const onHandleUpdateCates = async (category: CategoryType) => {
-     console.log(category);
-     const { data } = await updateCates(category);
-     setProducts(categorys.map((item) => (item._id == data._id ? data : item)));
-   };
+  const onHandleAddCates = async (category: ProductType) => {
+    // call api
+    const { data } = await createCates(category);
+    setProducts([...categorys, data]);
+  };
+  const onHandleUpdateCates = async (category: CategoryType) => {
+    console.log(category);
+    const { data } = await updateCates(category);
+    setProducts(categorys.map((item) => (item._id == data._id ? data : item)));
+  };
   // end category
 
- 
+
   return (
     <div className="App">
       <hr></hr>
       <div>
         <main>
-          
+
           <Routes>
             <Route path="/" element={<WebsiteLayout />}>
-              <Route index element={<Home  data={products}/>} />
+              <Route index element={<Home data={products} />} />
               <Route path="product">
-                <Route index element={<ProductPage data={products} />} />
-                <Route path=':id' element={<ProductDetailPage data={products}/>}/>
+                <Route index element={<ProductPage cates={categorys} data={products} />} />
+                <Route path=':id' element={<ProductDetailPage data={products} />} />
               </Route>
-              <Route path='signin' element={<Signin/>}/>
-              <Route path='signup' element={<Signup onAdd={onHandleAddUser}/>}/>
+              <Route path='signin' element={<Signin />} />
+              <Route path='signup' element={<Signup onAdd={onHandleAddUser} />} />
             </Route>
 
             {/*  */}
@@ -114,14 +114,14 @@ function App() {
               <Route index element={<Navigate to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="product">
-                <Route index element={<ManagerProduct  data={products}  onRemoveItem={removeItem}/>}/>
-                <Route  path="add"  element={<ProductAdd cates={categorys} onAdd={onHandleAdd} />}/>
-                <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate}/>}/>
+                <Route index element={<ManagerProduct data={products} onRemoveItem={removeItem} />} />
+                <Route path="add" element={<ProductAdd cates={categorys} onAdd={onHandleAdd} />} />
+                <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
               </Route>
               <Route path='category'>
-                <Route index element={<ManagerCategory data={categorys} removeCates={removeItemCates}/>}/>
-                <Route  path="add"  element={<CategoryAdd onAddCates={onHandleAddCates} />}/>
-                <Route path=":id/edit" element={<CategoryEdit  updateCates={onHandleUpdateCates}/>}/>
+                <Route index element={<ManagerCategory data={categorys} removeCates={removeItemCates} />} />
+                <Route path="add" element={<CategoryAdd onAddCates={onHandleAddCates} />} />
+                <Route path=":id/edit" element={<CategoryEdit updateCates={onHandleUpdateCates} />} />
               </Route>
             </Route>
           </Routes>

@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { listCates } from "../../../../api/category";
+import { CategoryType } from "../../../../types/category";
 import { ProductType } from "../../../../types/product";
 
 type ProductPageProps = {
-  data: ProductType[];
+  data: ProductType[],
+  cates : CategoryType[]
 };
 
 const ProductPage = (props: ProductPageProps) => {
+    const [categorys, setCategorys] = useState<CategoryType[]>([]);
+    useEffect(() => {
+      const getCategorys = async () => {
+        const {data : cates} = await listCates();
+        setCategorys(cates);
+      }
+      getCategorys();
+    })
   return (
     <div className="h-auto py-10">
       <div className="shop-box-inner">
@@ -34,98 +45,27 @@ const ProductPage = (props: ProductPageProps) => {
                     data-children=".sub-men"
                   >
                     <div className="list-group-collapse sub-men">
-                      <a
-                        className="list-group-item list-group-item-action"
-                        href="#sub-men1"
-                        data-toggle="collapse"
-                        aria-expanded="true"
-                        aria-controls="sub-men1"
-                      >
-                        Clothing
-                        <small className="text-muted">(100)</small>
-                      </a>
                       <div
                         className="collapse show"
                         id="sub-men1"
                         data-parent="#list-group-men"
                       >
                         <div className="list-group">
-                          <a
-                            href="#"
-                            className="list-group-item list-group-item-action active"
-                          >
-                            T-Shirts
-                            <small className="text-muted">(50)</small>
-                          </a>
-                          <a
-                            href="#"
-                            className="list-group-item list-group-item-action"
-                          >
-                            Polo T-Shirts
-                            <small className="text-muted">(10)</small>
-                          </a>
+                          {props.cates &&
+                            props.cates.map((category, index) => {
+                              return (
+                                <a
+                                  href="#"
+                                  className="list-group-item list-group-item-action"
+                                >
+                                  {category.name}
+                                  <small className="text-muted">(10)</small>
+                                </a>
+                              );
+                            })}
                         </div>
                       </div>
                     </div>
-                    <div className="list-group-collapse sub-men">
-                      <a
-                        className="list-group-item list-group-item-action"
-                        href="#sub-men2"
-                        data-toggle="collapse"
-                        aria-expanded="false"
-                        aria-controls="sub-men2"
-                      >
-                        Footwear
-                        <small className="text-muted">(50)</small>
-                      </a>
-                      <div
-                        className="collapse"
-                        id="sub-men2"
-                        data-parent="#list-group-men"
-                      >
-                        <div className="list-group">
-                          <a
-                            href="#"
-                            className="list-group-item list-group-item-action"
-                          >
-                            Sports Shoes
-                            <small className="text-muted">(10)</small>
-                          </a>
-                          <a
-                            href="#"
-                            className="list-group-item list-group-item-action"
-                          >
-                            Sneakers <small className="text-muted">(20)</small>
-                          </a>
-                          <a
-                            href="#"
-                            className="list-group-item list-group-item-action"
-                          >
-                            Formal Shoes
-                            <small className="text-muted">(20)</small>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <a
-                      href="#"
-                      className="list-group-item list-group-item-action"
-                    >
-                      {" "}
-                      Men <small className="text-muted">(150) </small>
-                    </a>
-                    <a
-                      href="#"
-                      className="list-group-item list-group-item-action"
-                    >
-                      Accessories <small className="text-muted">(11)</small>
-                    </a>
-                    <a
-                      href="#"
-                      className="list-group-item list-group-item-action"
-                    >
-                      Bags <small className="text-muted">(22)</small>
-                    </a>
                   </div>
                 </div>
                 {/* <div class="filter-price-left">
@@ -231,7 +171,7 @@ const ProductPage = (props: ProductPageProps) => {
                               tabIndex={0}
                               className="h-100 shadow border-0 px-[10px] mb-4 pt-2 focus:outline-none mx-2 w-72 xl:mb-0 mb-8"
                             >
-                              <Link to={`:${product._id}`}>
+                              <Link to={`${product._id}`}>
                                 <div>
                                   <img
                                     alt="person capturing an image"
@@ -243,7 +183,7 @@ const ProductPage = (props: ProductPageProps) => {
                               </Link>
                               <div className="bg-white dark:bg-gray-800">
                                 <div className="p-4">
-                                  <Link to={`:${product._id}`}>
+                                  <Link to={`${product._id}`}>
                                     <div className="flex items-center">
                                       <h2
                                         tabIndex={0}
@@ -277,7 +217,7 @@ const ProductPage = (props: ProductPageProps) => {
                                         data-toggle="tooltip"
                                         data-placement="top"
                                         title="Yêu thích sản phẩm"
-                                        to={`product/:${product._id}`}
+                                        to={`${product._id}`}
                                       >
                                         <i className="fas fa-eye px-2" />
                                       </Link>
