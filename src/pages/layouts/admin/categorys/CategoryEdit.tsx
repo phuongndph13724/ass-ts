@@ -14,22 +14,22 @@ type FormInputs = {
 }
 
 const CategoryEdit = (props: CategoryEditProps) => {
-    const {_id} = useParams();
-    const [products, setProducts] = useState<CategoryType[]>([]);
+    const {id} = useParams();
     const { register, handleSubmit, formState :{errors}, reset} = useForm<FormInputs>();
     const navigate = useNavigate();
-    const [error, setError] = useState();
+    
     useEffect(() => {
-        const getProduct = async () => {
-            const {data} = await readCates(_id);
+        const getCategory = async () => {
+            const {data} = await readCates(id);
+            console.log(data)
             reset(data);
         }
-        getProduct();
+        getCategory();
     },[]);
     
     const onSubmit: SubmitHandler<FormInputs> = data => {    
         props.updateCates(data);
-        navigate("/admin/product");
+        // navigate("/admin/category");
   }
   return <div>
       <section className="py-5">
@@ -46,7 +46,7 @@ const CategoryEdit = (props: CategoryEditProps) => {
                         <div className="form-floating mb-3">
                         <input  {...register('name',{required: true})}  className="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                         {errors.name && errors.name.type === "required" && <span>Nhập vào tên sản phẩm</span>}
-                        <label htmlFor="name">Tên sản phẩm</label>
+                        <label htmlFor="name">Tên danh mục sản phẩm</label>
                         </div>
                         <div className="form-floating mb-3">
                         <input className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />

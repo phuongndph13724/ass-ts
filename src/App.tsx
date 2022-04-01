@@ -21,7 +21,7 @@ import ProductDetailPage from './pages/layouts/client/products/ProductDetailPage
 import PrivateRouter from './components/PrivateRouter';
 import ManagerCategory from './pages/layouts/admin/categorys/ManagerCategory';
 import { CategoryType } from './types/category';
-import { createCates, listCates, removeCates } from './api/category';
+import { createCates, listCates, removeCates, updateCates } from './api/category';
 import CategoryAdd from './pages/layouts/admin/categorys/CategoryAdd';
 import CategoryEdit from './pages/layouts/admin/categorys/CategoryEdit';
 
@@ -47,6 +47,7 @@ function App() {
   const onHandleAdd = async (product: ProductType) => {
     // call api
     const { data} = await add(product);
+    console.log(data);
     setProducts([...products, data])
   }
   const onHandleUpdate = async (product: ProductType) => {
@@ -82,8 +83,9 @@ function App() {
      const { data } = await createCates(category);
      setProducts([...categorys, data]);
    };
-   const onHandleUpdateCates = async (category: ProductType) => {
-     const { data } = await update(category);
+   const onHandleUpdateCates = async (category: CategoryType) => {
+     console.log(category);
+     const { data } = await updateCates(category);
      setProducts(categorys.map((item) => (item._id == data._id ? data : item)));
    };
   // end category
@@ -113,7 +115,7 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="product">
                 <Route index element={<ManagerProduct  data={products}  onRemoveItem={removeItem}/>}/>
-                <Route  path="add"  element={<ProductAdd onAdd={onHandleAdd} />}/>
+                <Route  path="add"  element={<ProductAdd cates={categorys} onAdd={onHandleAdd} />}/>
                 <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate}/>}/>
               </Route>
               <Route path='category'>

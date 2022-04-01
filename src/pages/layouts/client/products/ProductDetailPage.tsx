@@ -10,6 +10,7 @@ type ProductDetailPageProps = {
 
 const ProductDetailPage = (props: ProductDetailPageProps) => {
   const {id} = useParams();
+  console.log(id);
   const [product, setProduct] = useState<ProductType[]>([])
   useEffect(() => {
     const getProduct = async () => {

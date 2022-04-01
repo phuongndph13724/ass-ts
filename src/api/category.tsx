@@ -17,3 +17,7 @@ export const removeCates = (_id: CategoryType) => {
   const url = `/categorys/${_id}`;
   return instance.delete(url);
 };
+export const updateCates = ( category : CategoryType) => {
+  const url =`/categorys/${category._id}`;
+  return instance.put(url,category);
+}

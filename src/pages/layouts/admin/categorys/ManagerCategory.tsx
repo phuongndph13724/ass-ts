@@ -23,7 +23,7 @@ const ManagerCategory = (props: ManagerCategoryProps) => {
         <thead>
           <tr>
             <th>#</th>
-            <th>Tên sản phẩm</th>
+            <th>Tên danh mục sản phẩm</th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@ const ManagerCategory = (props: ManagerCategoryProps) => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    <Link to={`/product/${category._id}`}>{category.name}</Link>
+                    <Link to={`/category/${category._id}`}>{category.name}</Link>
                   </td>
                   <td>
                     <Link to={`/admin/category/${category._id}/edit`}>Edit</Link>
