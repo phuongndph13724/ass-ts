@@ -5,20 +5,20 @@ import { read } from "../../../../api/product";
 import { ProductType } from "../../../../types/product";
 
 type ProductDetailPageProps = {
-  data : ProductType[]
+  data: ProductType[]
 };
 
 const ProductDetailPage = (props: ProductDetailPageProps) => {
-  const {id} = useParams();
+  const { id } = useParams();
   console.log(id);
   const [product, setProduct] = useState<ProductType[]>([])
   useEffect(() => {
     const getProduct = async () => {
-      const {data} = await read(id);
+      const { data } = await read(id);
       setProduct(data)
     }
     getProduct();
-  },[]);
+  }, []);
   return (
     <div>
       <section className="py-[117px]">

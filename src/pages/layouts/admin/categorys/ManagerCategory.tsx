@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { CategoryType } from '../../../../types/category';
 
 type ManagerCategoryProps = {
-    data : CategoryType[],
-    removeCates : (_id : number) => void
+  data: CategoryType[],
+  removeCates: (_id: number) => void
 };
 
 
 const ManagerCategory = (props: ManagerCategoryProps) => {
-  
-  
+
+
 
   return (
     <div>

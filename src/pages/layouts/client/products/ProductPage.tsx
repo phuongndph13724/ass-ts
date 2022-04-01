@@ -6,18 +6,18 @@ import { ProductType } from "../../../../types/product";
 
 type ProductPageProps = {
   data: ProductType[],
-  cates : CategoryType[]
+  cates: CategoryType[]
 };
 
 const ProductPage = (props: ProductPageProps) => {
-    const [categorys, setCategorys] = useState<CategoryType[]>([]);
-    useEffect(() => {
-      const getCategorys = async () => {
-        const {data : cates} = await listCates();
-        setCategorys(cates);
-      }
-      getCategorys();
-    })
+  const [categorys, setCategorys] = useState<CategoryType[]>([]);
+  useEffect(() => {
+    const getCategorys = async () => {
+      const { data: cates } = await listCates();
+      setCategorys(cates);
+    }
+    getCategorys();
+  })
   return (
     <div className="h-auto py-10">
       <div className="shop-box-inner">

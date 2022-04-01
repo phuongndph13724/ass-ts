@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ProductType } from "../types/product";
 
 type HomeProps = {
-  data : ProductType[]
+  data: ProductType[]
 };
 
 const Home = (props: HomeProps) => {
@@ -59,85 +59,85 @@ const Home = (props: HomeProps) => {
               <div className="mx-auto container py-8">
                 <div className="flex flex-wrap items-center lg:justify-between justify-center">
                   {/* Card 1 */}
-                  {props.data && props.data.map((product,index) => {
+                  {props.data && props.data.map((product, index) => {
                     return (
                       <div key={index}
-                    tabIndex={0}
-                    className="h-100 shadow border-0 px-[10px] mb-4 pt-2 focus:outline-none mx-2 w-72 xl:mb-0 mb-8"
-                  >
-                    <div>
-                      <Link to={`product/${product._id}`}>
-                        <img
-                          alt="person capturing an image"
-                          src={product.img}
-                          tabIndex={0}
-                          className="focus:outline-none w-full h-44"
-                        />
-                      </Link>
-                    </div>
-                    <div className="bg-white dark:bg-gray-800">
-                      <div className="p-4">
-                        <Link to={`product/${product._id}`}>
-                          <div className="flex items-center">
-                            <h2
+                        tabIndex={0}
+                        className="h-100 shadow border-0 px-[10px] mb-4 pt-2 focus:outline-none mx-2 w-72 xl:mb-0 mb-8"
+                      >
+                        <div>
+                          <Link to={`product/${product._id}`}>
+                            <img
+                              alt="person capturing an image"
+                              src={product.img}
                               tabIndex={0}
-                              className="focus:outline-none text-l dark:text-white font-semibold"
-                            >
-                              {product.name}
-                            </h2>
+                              className="focus:outline-none w-full h-44"
+                            />
+                          </Link>
+                        </div>
+                        <div className="bg-white dark:bg-gray-800">
+                          <div className="p-4">
+                            <Link to={`product/${product._id}`}>
+                              <div className="flex items-center">
+                                <h2
+                                  tabIndex={0}
+                                  className="focus:outline-none text-l dark:text-white font-semibold"
+                                >
+                                  {product.name}
+                                </h2>
+                              </div>
+                              <p
+                                tabIndex={0}
+                                className="focus:outline-none text-xs text-gray-600 dark:text-gray-200 mt-2"
+                              >
+                                {product.title}
+                              </p>
+                            </Link>
+                            <div className="flex items-center justify-between pt-[2px]">
+                              <div className="product-action d-flex justify-content-around">
+                                <a
+                                  href="#like"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Yêu thích sản phẩm"
+                                >
+                                  <i
+                                    className="fas fa-heart px-2"
+                                    style={{ color: "red" }}
+                                  />
+                                </a>
+                                <span className="saperator">|</span>
+                                <Link data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Yêu thích sản phẩm"
+                                  to={`product/:${product._id}`}><i className="fas fa-eye px-2" />
+                                </Link>
+                                <span className="saperator">|</span>
+                                <a
+                                  href="#cart"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  title="Thêm vào giỏ hàng"
+                                >
+                                  <i
+                                    className="fas fa-cart-plus px-2"
+                                    style={{ color: "blue" }}
+                                  />
+                                </a>
+                              </div>
+                              <h3
+                                tabIndex={0}
+                                className="focus:outline-none text-indigo-700 text-xl font-semibold"
+                              >
+                                {product.price}$
+                              </h3>
+                            </div>
                           </div>
-                          <p
-                            tabIndex={0}
-                            className="focus:outline-none text-xs text-gray-600 dark:text-gray-200 mt-2"
-                          >
-                            {product.title}
-                          </p>
-                        </Link>
-                        <div className="flex items-center justify-between pt-[2px]">
-                          <div className="product-action d-flex justify-content-around">
-                            <a
-                              href="#like"
-                              data-toggle="tooltip"
-                              data-placement="top"
-                              title="Yêu thích sản phẩm"
-                            >
-                              <i
-                                className="fas fa-heart px-2"
-                                style={{ color: "red" }}
-                              />
-                            </a>
-                            <span className="saperator">|</span>
-                            <Link data-toggle="tooltip"
-                              data-placement="top"
-                              title="Yêu thích sản phẩm"
-                              to={`product/:${product._id}`}><i className="fas fa-eye px-2" />
-                              </Link>
-                            <span className="saperator">|</span>
-                            <a
-                              href="#cart"
-                              data-toggle="tooltip"
-                              data-placement="top"
-                              title="Thêm vào giỏ hàng"
-                            >
-                              <i
-                                className="fas fa-cart-plus px-2"
-                                style={{ color: "blue" }}
-                              />
-                            </a>
-                          </div>
-                          <h3
-                            tabIndex={0}
-                            className="focus:outline-none text-indigo-700 text-xl font-semibold"
-                          >
-                            {product.price}$
-                          </h3>
                         </div>
                       </div>
-                    </div>
-                  </div>
                     )
                   })}
-                  
+
                   {/* Card 1 */}
                 </div>
               </div>

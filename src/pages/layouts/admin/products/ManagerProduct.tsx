@@ -7,7 +7,7 @@ type ManagerProductProps = {
   onRemoveItem: (_id: number) => void;
 };
 
-const ManagerProduct = (props : ManagerProductProps) => {
+const ManagerProduct = (props: ManagerProductProps) => {
   return (
     <div>
       <h2 className=" my-4 mx-4 text-left">

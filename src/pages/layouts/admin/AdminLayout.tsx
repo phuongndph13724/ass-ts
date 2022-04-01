@@ -49,31 +49,31 @@ const AdminLayout = (props: Props) => {
                     <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                   </button>
                 </div>
-                
+
               </div>
             </div>
           </div>
         </div>
       </nav>
-          <main className="py-10">
-                <Outlet />
-            </main>
+      <main className="py-10">
+        <Outlet />
+      </main>
       <footer className="bg-dark py-4 mt-auto">
-                <div className="container px-5">
-                  <div className="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div className="col-auto"><div className="small m-0 text-white">Copyright © Your Website 2021</div></div>
-                    <div className="col-auto">
-                      <a className="link-light small" href="#!">Privacy</a>
-                      <span className="text-white mx-1">·</span>
-                      <a className="link-light small" href="#!">Terms</a>
-                      <span className="text-white mx-1">·</span>
-                      <a className="link-light small" href="#!">Contact</a>
-                    </div>
-                  </div>
-                </div>
-              </footer>
+        <div className="container px-5">
+          <div className="row align-items-center justify-content-between flex-column flex-sm-row">
+            <div className="col-auto"><div className="small m-0 text-white">Copyright © Your Website 2021</div></div>
+            <div className="col-auto">
+              <a className="link-light small" href="#!">Privacy</a>
+              <span className="text-white mx-1">·</span>
+              <a className="link-light small" href="#!">Terms</a>
+              <span className="text-white mx-1">·</span>
+              <a className="link-light small" href="#!">Contact</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
-    
+
   );
 };
 

@@ -22,13 +22,13 @@ const Signin = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      const {data : user} = await signin(data);
+      const { data: user } = await signin(data);
       authenticate(user, () => navigate("/"));
 
       // console.log(response.data)
     } catch (error: any) {
       console.log(error.response)
-      if(error.response.status  === 400) {
+      if (error.response.status === 400) {
         setError(error.response.data)
       }
     }
@@ -36,7 +36,7 @@ const Signin = () => {
 
   return (
     <div>
-      
+
       <section className="py-[117px]">
         <div className="container px-5">
           <div className="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
