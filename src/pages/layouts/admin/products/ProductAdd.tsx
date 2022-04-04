@@ -68,12 +68,12 @@ const ProductAdd = (props: ProductAddProps) => {
 
                                     <div className="input-group mb-3">
                                         <label className="input-group-text py-3" htmlFor="inputGroupSelect02">Danh mục</label>
-                                        <select className="form-select" >
-                                            <option selected>Chọn danh mục</option>
+                                        <select {...register('category', { required: true })} className="form-select" >
+                                            <option value="" selected>Chọn Danh Mục</option>
                                             {props.cates &&
                                                 props.cates.map((category, index) => {
                                                     return (
-                                                        <option{...register('category', { required: true })} id="category">{category.name}</option>
+                                                        <option value={category._id}>{category.name}</option>
                                                     );
                                                 })}
                                         </select>

@@ -41,7 +41,6 @@ function App() {
   const removeItem = async (id: number) => {
     // xoa tren API
     const { data } = await remove(id);
-    console.log(data);
     // reRender
     data && setProducts(products.filter(item => item._id !== data._id));
   }
@@ -73,6 +72,7 @@ function App() {
     };
     getCategorys();
   }, []);
+  
   const removeItemCates = async (id: number) => {
     // xoa tren API
     const { data } = await removeCates(id);
@@ -116,7 +116,7 @@ function App() {
               <Route path="product">
                 <Route index element={<ManagerProduct data={products} onRemoveItem={removeItem} />} />
                 <Route path="add" element={<ProductAdd cates={categorys} onAdd={onHandleAdd} />} />
-                <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
+                <Route path=":id/edit" element={<ProductEdit cates={categorys} onUpdate={onHandleUpdate} />} />
               </Route>
 
               <Route path='category'>

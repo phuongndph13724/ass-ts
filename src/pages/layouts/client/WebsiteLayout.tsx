@@ -32,6 +32,7 @@ const WebsiteLayout = (props: WebsiteLayoutProps) => {
   if (logout) {
     logout.addEventListener('click', function () {
       localStorage.removeItem('user');
+      window.location.reload();
     })
   }
   return (

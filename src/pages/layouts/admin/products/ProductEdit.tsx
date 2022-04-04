@@ -1,23 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
+import { listCates } from '../../../../api/category';
 import { read, update } from '../../../../api/product';
+import { CategoryType } from '../../../../types/category';
 import { ProductType } from '../../../../types/product';
 
 type ProductEditProps = {
+    cates : CategoryType[],
     onUpdate: (product: ProductType) => void
 };
 type FormInputs = {
     name: string,
     img: string,
     price: number,
-    title: string
+    title: string,
+    category : string
 }
 
 const ProductEdit = (props: ProductEditProps) => {
     const { id } = useParams();
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>();
     const navigate = useNavigate();
+    const [categorys, setCategorys] = useState<CategoryType[]>([]);
+    useEffect(() => {
+      const getCategorys = async () => {
+        const { data: cates } = await listCates();
+        setCategorys(cates);
+        console.log(cates);
+      };
+      getCategorys();
+    }, []);
+
     useEffect(() => {
         const getProduct = async () => {
             const { data } = await read(id);
@@ -61,7 +75,18 @@ const ProductEdit = (props: ProductEditProps) => {
                                         {errors.name && errors.name.type === "required" && <span>Nhập vào mô tả sản phẩm</span>}
                                         <label htmlFor="name">Mô tả</label>
                                     </div>
-
+                                    <div className="input-group mb-3">
+                                        <label className="input-group-text py-3" htmlFor="inputGroupSelect02">Danh mục</label>
+                                        <select {...register('category', { required: true })} id="category" className="form-select" >
+                                            {props.cates &&
+                                                props.cates.map((category, index) => {
+                                                    return (
+                                                        <option value={category._id}>{category.name}</option>
+                                                    );
+                                                })}
+                                        </select>
+                                    </div>
+                                    
                                     <div className="form-floating mb-3">
                                         <input className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
                                         <label htmlFor="img">
