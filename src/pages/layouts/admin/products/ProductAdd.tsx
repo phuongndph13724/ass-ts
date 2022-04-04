@@ -32,7 +32,7 @@ const ProductAdd = (props: ProductAddProps) => {
     }, []);
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         props.onAdd(data);
-        // console.log(data);
+        console.log(data);
         // navigate('/admin/product');
     }
     return (

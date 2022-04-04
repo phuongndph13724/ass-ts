@@ -3,16 +3,16 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { CategoryType } from '../../../../types/category'
 
-type Props = {
-    onAddCates: (category: CategoryType) => void
-}
+type CategoryAddProps = {
+  onAddCates: (category: CategoryType) => void;
+};
 
 type FormValues = {
     name: string,
     img: string
 };
 
-const CategoryAdd = (props: Props) => {
+const CategoryAdd = (props: CategoryAddProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
     const navigate = useNavigate();
     const onSubmit: SubmitHandler<FormValues> = (data) => {

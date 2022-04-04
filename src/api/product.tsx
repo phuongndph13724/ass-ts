@@ -1,5 +1,8 @@
 import { ProductType } from '../types/product';
 import instance from './instance';
+import { isAuthenticate } from '../untils/localStorage';
+
+const userInfo = isAuthenticate();
 
 export const list = () => {
     const url = '/products';
@@ -10,8 +13,12 @@ export const remove = (_id: ProductType) => {
     return instance.delete(url);
 }
 export const add = (product: ProductType) => {
-    const url = `/products`;
-    return instance.post(url, product);
+    const url = `/products/${userInfo?.user._id}`;
+    return instance.post(url, product,{
+        headers : {
+            "Authoiaition" : `Bearer ${userInfo?.token}`
+        }
+    });
 }
 export const read = (id: number) => {
     const url = `/products/${id}`;

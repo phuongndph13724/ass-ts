@@ -36,29 +36,31 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                     />
                   </div>
                 </div>
-                <div className="col-sm-8 col-12">
-                  <div className="title-area clearfix">
-                    <h2 className="product-title float-left text-3xl pb-4">
-                      {product?.name}
-                    </h2>
-                  </div>
-                  <div className="price-reviews clearfix">
-                    <span className="price-box float-left ml-4 pb-2">
-                      <span className="price h4 pb-2 my-2 text-blue-600">
-                        {product?.price}$
+                <div className="pl-20 col-sm-8 col-12">
+                  <div className="h-[250px]">
+                    <div className="title-area clearfix">
+                      <h2 className="product-title float-left text-3xl pb-4">
+                        {product?.name}
+                      </h2>
+                    </div>
+                    <div className="price-reviews clearfix">
+                      <span className="price-box float-left ml-4 pb-2">
+                        <span className="price h4 pb-2 my-2 text-red-600">
+                          {product?.price}$
+                        </span>
+                        <br />
+                        <span className="text-decoration-line-through old-price h4 my-4 text-blue-900">
+                          {product?.price}$
+                        </span>
                       </span>
-                      <br />
-                      <span className="old-price h4 my-4 text-black">
-                        {product?.price}$
-                      </span>
-                    </span>
+                    </div>
+                    {/* Product Information */}
+                    <div className="product-info text-left">
+                      <p>{product?.title}$</p>
+                    </div>
+                    {/* Product Information Ends*/}
+                    {/* Color Options */}
                   </div>
-                  {/* Product Information */}
-                  <div className="product-info">
-                    <p>{product?.title}$</p>
-                  </div>
-                  {/* Product Information Ends*/}
-                  {/* Color Options */}
                   <div className="row py-8">
                     <div className="col-lg-6 flex">
                       <div className="product-options color-options mb-2">
@@ -165,21 +167,12 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                           data-placement="top"
                           data-toggle="tooltip"
                           href="#like"
-                          title="Add To Wishlist"
+                          title="Yêu thích sản phẩm"
                         >
                           <i
                             className="fas fa-heart px-2"
                             style={{ color: "red" }}
                           />
-                        </a>
-                        <span className="saperator">|</span>
-                        <a
-                          data-placement="top"
-                          data-toggle="tooltip"
-                          href="#view"
-                          title="Quick View"
-                        >
-                          <i className="fas fa-eye px-2" />
                         </a>
                         <span className="saperator">|</span>
                         <a

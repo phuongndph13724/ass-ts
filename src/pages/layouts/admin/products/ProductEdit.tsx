@@ -16,10 +16,8 @@ type FormInputs = {
 
 const ProductEdit = (props: ProductEditProps) => {
     const { id } = useParams();
-    const [products, setProducts] = useState<ProductType[]>([]);
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>();
     const navigate = useNavigate();
-    const [error, setError] = useState();
     useEffect(() => {
         const getProduct = async () => {
             const { data } = await read(id);

@@ -24,6 +24,7 @@ import { CategoryType } from './types/category';
 import { createCates, listCates, removeCates, updateCates } from './api/category';
 import CategoryAdd from './pages/layouts/admin/categorys/CategoryAdd';
 import CategoryEdit from './pages/layouts/admin/categorys/CategoryEdit';
+import ManagerSlide from './pages/layouts/client/slides/ManagerSlide';
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -56,7 +57,6 @@ function App() {
   };
   // end product
 
-
   const onHandleAddUser = async (user: UserType) => {
     const { data } = await signup(user);
     console.log(data);
@@ -84,9 +84,8 @@ function App() {
     setProducts([...categorys, data]);
   };
   const onHandleUpdateCates = async (category: CategoryType) => {
-    console.log(category);
     const { data } = await updateCates(category);
-    setProducts(categorys.map((item) => (item._id == data._id ? data : item)));
+    setCategorys(categorys.map((item) => (item._id == data._id ? data : item)));
   };
   // end category
 
@@ -113,15 +112,21 @@ function App() {
             <Route path="admin" element={<PrivateRouter><AdminLayout /></PrivateRouter>}>
               <Route index element={<Navigate to="dashboard" />} />
               <Route path="dashboard" element={<Dashboard />} />
+
               <Route path="product">
                 <Route index element={<ManagerProduct data={products} onRemoveItem={removeItem} />} />
                 <Route path="add" element={<ProductAdd cates={categorys} onAdd={onHandleAdd} />} />
                 <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
               </Route>
+
               <Route path='category'>
                 <Route index element={<ManagerCategory data={categorys} removeCates={removeItemCates} />} />
                 <Route path="add" element={<CategoryAdd onAddCates={onHandleAddCates} />} />
                 <Route path=":id/edit" element={<CategoryEdit updateCates={onHandleUpdateCates} />} />
+              </Route>
+
+              <Route path='slider'>
+                  <Route element={<ManagerSlide/>}/>
               </Route>
             </Route>
           </Routes>

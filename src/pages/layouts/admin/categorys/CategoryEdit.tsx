@@ -20,8 +20,7 @@ const CategoryEdit = (props: CategoryEditProps) => {
 
     useEffect(() => {
         const getCategory = async () => {
-            const { data } = await readCates(id);
-            console.log(data)
+            const { data  } = await readCates(id);
             reset(data);
         }
         getCategory();
@@ -37,7 +36,7 @@ const CategoryEdit = (props: CategoryEditProps) => {
                 {/* Contact form*/}
                 <div className="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
                     <div className="text-center mb-5">
-                        <h1 className="fw-bolder">Cập nhật sản phẩm</h1>
+                        <h1 className="fw-bolder">Cập nhật danh mục sản phẩm</h1>
                     </div>
                     <div className="row gx-5 justify-content-center">
                         <div className="col-lg-8 col-xl-6">
@@ -53,7 +52,6 @@ const CategoryEdit = (props: CategoryEditProps) => {
                                     <label htmlFor="img">
                                         <img className="rounded mx-auto d-block" src='' alt="" />
                                     </label>
-                                    <div className="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                                 </div>
                                 <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Cập nhập</button></div>
                             </form>
