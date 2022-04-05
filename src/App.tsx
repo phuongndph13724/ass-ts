@@ -78,6 +78,7 @@ function App() {
     const { data } = await removeCates(id);
     data && setCategorys(categorys.filter((item) => item._id !== data._id));
   };
+  
   const onHandleAddCates = async (category: ProductType) => {
     // call api
     const { data } = await createCates(category);

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useNavigate, useParams } from 'react-router-dom';
@@ -22,17 +23,30 @@ const ProductAdd = (props: ProductAddProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>()
     const navigate = useNavigate();
     const [categorys, setCategorys] = useState<CategoryType[]>([]);
+    const [image, setImage] = useState("");
     useEffect(() => {
         const getCategorys = async () => {
             const { data: cates } = await listCates();
             setCategorys(cates);
-            console.log(cates)
         };
         getCategorys();
     }, []);
-    const onSubmit: SubmitHandler<FormValues> = (data) => {
+    const onSubmit: SubmitHandler<FormValues> = async (data) => {
+        const file = data.img[0];
+        const CLOUDINARY_PRESET_KEY = "ppusewr6";
+        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dqhtmst8q/image/upload";
+       
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
+          const response = await axios.post(CLOUDINARY_API_URL, formData, {
+            headers: {
+              "Content-Type": "application/form-data",
+            },
+          });
+        data.img = response.data.url;
+        console.dir(data);
         props.onAdd(data);
-        console.log(data);
         // navigate('/admin/product');
     }
     return (
@@ -81,7 +95,7 @@ const ProductAdd = (props: ProductAddProps) => {
 
 
                                     <div className="form-floating mb-3">
-                                        <input className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
+                                        <input {...register('img')}  className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
                                         <label htmlFor="img">
                                             <img className="rounded mx-auto d-block" src='' alt="" />
                                         </label>
