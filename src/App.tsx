@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await list();
-      setProducts(data);
+        setProducts(data);
     }
     getProducts();
   }, [])
@@ -47,9 +47,9 @@ function App() {
   const onHandleAdd = async (product: ProductType) => {
     // call api
     const { data } = await add(product);
-    console.log(data);
     setProducts([...products, data])
   }
+
   const onHandleUpdate = async (product: ProductType) => {
     const { data } = await update(product);
     setProducts(products.map((item) => (item._id == data._id ? data : item)));
@@ -86,7 +86,7 @@ function App() {
   };
   const onHandleUpdateCates = async (category: CategoryType) => {
     const { data } = await updateCates(category);
-    setCategorys(categorys.map((item) => (item._id == data._id ? data : item)));
+    setCategorys(categorys.map((cates) => (cates._id == data._id ? data : cates)));
   };
   // end category
 

@@ -10,7 +10,7 @@ type CategoryEditProps = {
 
 type FormInputs = {
     name: string,
-    img: string
+    // img: string
 }
 
 const CategoryEdit = (props: CategoryEditProps) => {
@@ -22,6 +22,7 @@ const CategoryEdit = (props: CategoryEditProps) => {
         const getCategory = async () => {
             const { data  } = await readCates(id);
             reset(data);
+            console.log(data);
         }
         getCategory();
     }, []);
@@ -47,12 +48,12 @@ const CategoryEdit = (props: CategoryEditProps) => {
                                     {errors.name && errors.name.type === "required" && <span>Nhập vào tên sản phẩm</span>}
                                     <label htmlFor="name">Tên danh mục sản phẩm</label>
                                 </div>
-                                <div className="form-floating mb-3">
+                                {/* <div className="form-floating mb-3">
                                     <input className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
                                     <label htmlFor="img">
                                         <img className="rounded mx-auto d-block" src='' alt="" />
                                     </label>
-                                </div>
+                                </div> */}
                                 <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Cập nhập</button></div>
                             </form>
                         </div>

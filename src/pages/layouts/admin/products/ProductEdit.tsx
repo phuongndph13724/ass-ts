@@ -22,20 +22,20 @@ const ProductEdit = (props: ProductEditProps) => {
     const { id } = useParams();
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormInputs>();
     const navigate = useNavigate();
+
     const [categorys, setCategorys] = useState<CategoryType[]>([]);
     useEffect(() => {
       const getCategorys = async () => {
         const { data: cates } = await listCates();
         setCategorys(cates);
-        console.log(cates);
       };
       getCategorys();
     }, []);
 
+
     useEffect(() => {
         const getProduct = async () => {
             const { data } = await read(id);
-            console.log(data);
             reset(data);
         }
         getProduct();
@@ -43,6 +43,7 @@ const ProductEdit = (props: ProductEditProps) => {
 
     const onSubmit: SubmitHandler<FormInputs> = data => {
         props.onUpdate(data);
+
         navigate("/admin/product");
     };
     return (
@@ -79,7 +80,7 @@ const ProductEdit = (props: ProductEditProps) => {
                                         <label className="input-group-text py-3" htmlFor="inputGroupSelect02">Danh mục</label>
                                         <select {...register('category', { required: true })} id="category" className="form-select" >
                                             {props.cates &&
-                                                props.cates.map((category, index) => {
+                                                props.cates.map((category) => {
                                                     return (
                                                         <option value={category._id}>{category.name}</option>
                                                     );
@@ -88,10 +89,10 @@ const ProductEdit = (props: ProductEditProps) => {
                                     </div>
                                     
                                     <div className="form-floating mb-3">
-                                        <input className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
-                                        <label htmlFor="img">
+                                        <input {...register('img')}  className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
+                                        {/* <label htmlFor="img">
                                             <img className="rounded mx-auto d-block" src='' alt="" />
-                                        </label>
+                                        </label> */}
                                     </div>
                                     <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Cập nhập</button></div>
                                 </form>

@@ -23,7 +23,6 @@ const ProductAdd = (props: ProductAddProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>()
     const navigate = useNavigate();
     const [categorys, setCategorys] = useState<CategoryType[]>([]);
-    const [image, setImage] = useState("");
     useEffect(() => {
         const getCategorys = async () => {
             const { data: cates } = await listCates();
@@ -41,7 +40,7 @@ const ProductAdd = (props: ProductAddProps) => {
           formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
           const response = await axios.post(CLOUDINARY_API_URL, formData, {
             headers: {
-              "Content-Type": "application/form-data",
+              "Content-Type": "application/form-data"
             },
           });
         data.img = response.data.url;
@@ -95,7 +94,7 @@ const ProductAdd = (props: ProductAddProps) => {
 
 
                                     <div className="form-floating mb-3">
-                                        <input {...register('img')}  className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
+                                        <input {...register('img')}  className="form-control"  type="file" placeholder="" data-sb-validations="required" />
                                         <label htmlFor="img">
                                             <img className="rounded mx-auto d-block" src='' alt="" />
                                         </label>
