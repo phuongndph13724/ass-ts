@@ -34,8 +34,8 @@ const ProductAdd = (props: ProductAddProps) => {
         const file = data.img[0];
         const CLOUDINARY_PRESET_KEY = "ppusewr6";
         const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dqhtmst8q/image/upload";
-       
-          const formData = new FormData();
+        if(file){
+           const formData = new FormData();
           formData.append("file", file);
           formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
           const response = await axios.post(CLOUDINARY_API_URL, formData, {
@@ -43,8 +43,8 @@ const ProductAdd = (props: ProductAddProps) => {
               "Content-Type": "application/form-data"
             },
           });
-        data.img = response.data.url;
-        console.dir(data);
+        data.img = response.data.url; 
+        }
         props.onAdd(data);
         // navigate('/admin/product');
     }
@@ -78,28 +78,23 @@ const ProductAdd = (props: ProductAddProps) => {
                                         {errors.name && errors.name.type === "required" && <span>Nhập vào mô tả sản phẩm</span>}
                                         <label htmlFor="name">Mô tả</label>
                                     </div>
-
                                     <div className="input-group mb-3">
                                         <label className="input-group-text py-3" htmlFor="inputGroupSelect02">Danh mục</label>
-                                        <select {...register('category', { required: true })} className="form-select" >
-                                            <option value="" selected>Chọn Danh Mục</option>
+                                        <select {...register('category', { required: true })} id="category" className="form-select" >
+                                            <option value="">Chọn danh mục</option>
                                             {props.cates &&
-                                                props.cates.map((category, index) => {
+                                                props.cates.map((category) => {
                                                     return (
                                                         <option value={category._id}>{category.name}</option>
                                                     );
                                                 })}
                                         </select>
                                     </div>
-
-
+                                    
                                     <div className="form-floating mb-3">
-                                        <input {...register('img')}  className="form-control"  type="file" placeholder="" data-sb-validations="required" />
-                                        <label htmlFor="img">
-                                            <img className="rounded mx-auto d-block" src='' alt="" />
-                                        </label>
+                                        <input {...register('img')}  className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
                                     </div>
-                                    <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Thêm</button></div>
+                                    <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Cập nhập</button></div>
                                 </form>
                             </div>
                         </div>

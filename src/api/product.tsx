@@ -13,13 +13,13 @@ export const remove = (_id: ProductType) => {
     return instance.delete(url);
 }
 export const add = (product: ProductType) => {
-    const url = `/products/${userInfo?.user._id}`;
-    return instance.post(url, product,{
-        headers : {
-            "Authoiaition" : `Bearer ${userInfo?.token}`
-        }
-    });
-}
+  const url = `/products/${userInfo?.user._id}`;
+  return instance.post(url, product, {
+    headers: {
+      Authoiaition: `Bearer ${userInfo?.token}`,
+    },
+  });
+};
 export const read = (id: number) => {
     const url = `/products/${id}`;
     return instance.get(url);

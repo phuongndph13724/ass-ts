@@ -1,4 +1,5 @@
 export type CategoryType = {
     _id? : number,
-    name : string
+    name : string,
+    img : string
 }

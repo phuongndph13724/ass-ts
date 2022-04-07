@@ -190,15 +190,13 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                     </div>
                     <div className="col-xl-5 col-lg-5 col-md-12 mb-2">
                       <div className="product-buttons pl-2">
-                        <a className="mx-2 btn btn-danger btn-sm" href="">
-                          Add to Cart
-                        </a>
-                        <a
+                        <button data-id={product?._id} className="mx-2 btn btn-danger btn-sm">Add to Cart</button>
+                        {/* <a
                           className="btn btn-info btn-sm"
                           href="ecommerce-checkout.html"
                         >
                           Buy Now
-                        </a>
+                        </a> */}
                       </div>
                     </div>
                   </div>

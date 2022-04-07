@@ -24,6 +24,7 @@ const ManagerCategory = (props: ManagerCategoryProps) => {
           <tr>
             <th>#</th>
             <th>Tên danh mục sản phẩm</th>
+            <th>Ảnh</th>
           </tr>
         </thead>
         <tbody>
@@ -33,10 +34,15 @@ const ManagerCategory = (props: ManagerCategoryProps) => {
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    <Link to={`/category/${category._id}`}>{category.name}</Link>
+                    <Link to={`/category/${category._id}`}>
+                      {category.name}
+                    </Link>
                   </td>
+                  <td><img src={category.img} alt="" /></td>
                   <td>
-                    <Link to={`/admin/category/${category._id}/edit`}>Edit</Link>
+                    <Link to={`/admin/category/${category._id}/edit`}>
+                      Edit
+                    </Link>
                     <button
                       className=""
                       onClick={() => props.removeCates(category._id)}
@@ -50,7 +56,7 @@ const ManagerCategory = (props: ManagerCategoryProps) => {
         </tbody>
       </table>
     </div>
-  )
+  );
 }
 
 export default ManagerCategory

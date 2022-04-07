@@ -10,7 +10,7 @@ type CategoryEditProps = {
 
 type FormInputs = {
     name: string,
-    // img: string
+    img: string
 }
 
 const CategoryEdit = (props: CategoryEditProps) => {

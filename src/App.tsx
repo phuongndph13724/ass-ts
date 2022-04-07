@@ -25,10 +25,16 @@ import { createCates, listCates, removeCates, updateCates } from './api/category
 import CategoryAdd from './pages/layouts/admin/categorys/CategoryAdd';
 import CategoryEdit from './pages/layouts/admin/categorys/CategoryEdit';
 import ManagerSlide from './pages/layouts/client/slides/ManagerSlide';
+import ManagerPost from './pages/layouts/client/posts/ManagerPost';
+import PostList from './pages/layouts/admin/posts/PostList';
+import { PostType } from './types/post';
+import { listPost } from './api/post';
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [users, setUsers] = useState<UserType[]>([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
+  
   // const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
@@ -91,6 +97,16 @@ function App() {
   // end category
 
 
+  useEffect(() => {
+    const getPosts = async () => {
+      const { data: posts } = await listPost();
+      setPosts(posts);
+    };
+    getPosts();
+  }, []);
+
+  // end post
+
   return (
     <div className="App">
       <hr></hr>
@@ -125,7 +141,9 @@ function App() {
                 <Route path="add" element={<CategoryAdd onAddCates={onHandleAddCates} />} />
                 <Route path=":id/edit" element={<CategoryEdit updateCates={onHandleUpdateCates} />} />
               </Route>
-
+              <Route path='post'>
+                <Route index element={<PostList posts={posts}/>}/>
+              </Route>
               <Route path='slider'>
                   <Route element={<ManagerSlide/>}/>
               </Route>

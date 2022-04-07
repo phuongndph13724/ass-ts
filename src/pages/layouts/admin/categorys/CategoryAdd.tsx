@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -15,11 +16,24 @@ type FormValues = {
 const CategoryAdd = (props: CategoryAddProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
     const navigate = useNavigate();
-    const onSubmit: SubmitHandler<FormValues> = (data) => {
-        props.onAddCates(data);
-        navigate('/admin/category');
-        window.location.reload();
-
+    const onSubmit: SubmitHandler<FormValues> = async (data) => {
+      const file = data.img[0];
+      const CLOUDINARY_PRESET_KEY = "ppusewr6";
+      const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dqhtmst8q/image/upload";
+      if(file){
+         const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
+        const response = await axios.post(CLOUDINARY_API_URL, formData, {
+          headers: {
+            "Content-Type": "application/form-data"
+          },
+        });
+      data.img = response.data.url;
+      }
+      props.onAddCates(data);
+    //   navigate("/admin/category");
+      window.location.reload();
     }
     return (
         <div>
@@ -41,7 +55,7 @@ const CategoryAdd = (props: CategoryAddProps) => {
                                     </div>
 
                                     <div className="form-floating mb-3">
-                                        <input className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
+                                        <input  {...register('img')} className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
                                         <label htmlFor="img">
                                             <img className="rounded mx-auto d-block" src='' alt="" />
                                         </label>

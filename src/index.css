@@ -15,3 +15,6 @@ span {
   color: red;
   text-align: left;
 }
+* {
+  box-sizing: border-box;
+}
