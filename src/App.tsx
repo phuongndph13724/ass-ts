@@ -28,7 +28,8 @@ import ManagerSlide from './pages/layouts/client/slides/ManagerSlide';
 import ManagerPost from './pages/layouts/client/posts/ManagerPost';
 import PostList from './pages/layouts/admin/posts/PostList';
 import { PostType } from './types/post';
-import { listPost } from './api/post';
+import { createPost, listPost } from './api/post';
+import PostAdd from './pages/layouts/admin/posts/PostAdd';
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -104,7 +105,11 @@ function App() {
     };
     getPosts();
   }, []);
-
+  const onHandleAddPost = async (post: PostType) => {
+    // call api
+    const { data } = await createPost(post);
+    setProducts([...posts, data]);
+  };
   // end post
 
   return (
@@ -143,6 +148,7 @@ function App() {
               </Route>
               <Route path='post'>
                 <Route index element={<PostList posts={posts}/>}/>
+                <Route path='add' element={<PostAdd addPost={onHandleAddPost}/>}/>
               </Route>
               <Route path='slider'>
                   <Route element={<ManagerSlide/>}/>
