@@ -18,6 +18,6 @@ export const removePost = (_id: PostType) => {
   return instance.delete(url);
 };
 export const updatePost = (post: PostType) => {
-  const url = `/posts/${post.id}`;
+  const url = `/posts/${post._id}`;
   return instance.put(url, post);
 };

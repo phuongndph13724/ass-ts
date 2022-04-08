@@ -39,10 +39,11 @@ const PostList = (props: PostListProps) => {
                       <img className="w-full"  src={post.img} alt="" />
                   </td>
                   <td>
-                    <textarea className="p-2" cols={30} rows={8} defaultValue={post.desc} />
-
+                    <p className="h-50 w-100">{post.desc}</p>
+                    {/* <textarea className="p-2" cols={30} rows={8} defaultValue={post.desc} /> */}
                   </td>
                   <td>
+                      <Link to={`${post._id}/edit`}>Sửa</Link>
                       <button>Xóa</button>
                   </td>
                 </tr>
