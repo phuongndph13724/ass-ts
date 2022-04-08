@@ -28,7 +28,7 @@ import ManagerSlide from './pages/layouts/client/slides/ManagerSlide';
 import ManagerPost from './pages/layouts/client/posts/ManagerPost';
 import PostList from './pages/layouts/admin/posts/PostList';
 import { PostType } from './types/post';
-import { createPost, listPost, updatePost } from './api/post';
+import { createPost, listPost, removePost, updatePost } from './api/post';
 import PostAdd from './pages/layouts/admin/posts/PostAdd';
 import PostEdit from './pages/layouts/admin/posts/PostEdit';
 
@@ -117,6 +117,11 @@ function App() {
       posts.map((posts) => (posts._id == data._id ? data : posts))
     );
   };
+  const removeItemPost = async (id: number) => {
+    // xoa tren API
+    const { data } = await removePost(id);
+    data && setPosts(posts.filter((item) => item._id !== data._id));
+  };
   // end post
 
   return (
@@ -154,7 +159,7 @@ function App() {
                 <Route path=":id/edit" element={<CategoryEdit updateCates={onHandleUpdateCates} />} />
               </Route>
               <Route path='post'>
-                <Route index element={<PostList posts={posts}/>}/>
+                <Route index element={<PostList onRemovePost={removeItemPost} posts={posts}/>}/>
                 <Route path='add' element={<PostAdd addPost={onHandleAddPost}/>}/>
                 <Route path=':id/edit' element={<PostEdit data={posts} updatePost={updatePosts}/>}/>
               </Route>

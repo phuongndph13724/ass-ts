@@ -5,7 +5,8 @@ import { CategoryType } from "../../../../types/category";
 import { PostType } from "../../../../types/post";
 
 type PostListProps = {
-    posts : PostType[]
+    posts : PostType[],
+    onRemovePost : (_id: number) => void;
 };
 
 const PostList = (props: PostListProps) => {
@@ -39,14 +40,14 @@ const PostList = (props: PostListProps) => {
                       <img className="w-full"  src={post.img} alt="" />
                   </td>
                   <td>
-                    <p className="h-50 w-100">{post.desc}</p>
-                    {/* <textarea className="p-2" cols={30} rows={8} defaultValue={post.desc} /> */}
+                    {/* <p className="h-50 w-100">{post.desc}</p> */}
+                    <textarea className="p-2" cols={30} rows={8} defaultValue={post.desc} />
                   </td>
-                  <td>
-                      <Link to={`${post._id}/edit`}>Sửa</Link>
-                      <button>Xóa</button>
-                  </td>
-                </tr>
+                      <Link to={`/admin/post/${post._id}/edit`} style={{ color: 'blue' }}>Sửa</Link>&nbsp;
+                      <button  style={{ color: 'red' }} className="" onClick={() => props.onRemovePost(post._id)}>
+                          Xóa
+                        </button>
+                    </tr>
               );
             })}
         </tbody>
