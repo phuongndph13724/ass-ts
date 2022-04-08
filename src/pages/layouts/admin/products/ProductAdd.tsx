@@ -46,7 +46,7 @@ const ProductAdd = (props: ProductAddProps) => {
         data.img = response.data.url; 
         }
         props.onAdd(data);
-        // navigate('/admin/product');
+        navigate('/admin/product');
     }
     return (
         <div>
@@ -94,7 +94,7 @@ const ProductAdd = (props: ProductAddProps) => {
                                     <div className="form-floating mb-3">
                                         <input {...register('img')}  className="form-control" id="img" type="file" placeholder="" data-sb-validations="required" />
                                     </div>
-                                    <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Cập nhập</button></div>
+                                    <div className="d-grid border border-solid-2 py-2 rounded bg-primary"><button className="" id="submitButton" type="submit">Thêm Sản Phẩm Mới</button></div>
                                 </form>
                             </div>
                         </div>

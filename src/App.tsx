@@ -31,6 +31,7 @@ import { PostType } from './types/post';
 import { createPost, listPost, removePost, updatePost } from './api/post';
 import PostAdd from './pages/layouts/admin/posts/PostAdd';
 import PostEdit from './pages/layouts/admin/posts/PostEdit';
+import DetailPost from './pages/layouts/client/posts/DetailPost';
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -136,6 +137,10 @@ function App() {
               <Route path="product">
                 <Route index element={<ProductPage cates={categorys} data={products} />} />
                 <Route path=':id' element={<ProductDetailPage data={products} />} />
+              </Route>
+              <Route path='post'>
+                <Route index element={<ManagerPost data={posts}/>}/>
+                <Route path=':id' element={<DetailPost/>}/>
               </Route>
               <Route path='signin' element={<Signin />} />
               <Route path='signup' element={<Signup onAdd={onHandleAddUser} />} />

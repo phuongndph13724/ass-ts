@@ -50,8 +50,8 @@ const WebsiteLayout = (props: WebsiteLayoutProps) => {
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                    <li><a className="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                    <li><a className="dropdown-item" href="blog-post.html">Blog Post</a></li>
+                    <li><a className="dropdown-item" href="/post">Blog Home</a></li>
+                    {/* <li><a className="dropdown-item" href="blog-post.html">Blog Post</a></li> */}
                   </ul>
                 </li>
                 <li className="nav-item dropdown">
