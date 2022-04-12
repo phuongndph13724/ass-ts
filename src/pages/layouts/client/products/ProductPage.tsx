@@ -197,6 +197,12 @@ const ProductPage = (props: ProductPageProps) => {
                                       className="focus:outline-none text-xs text-gray-600 dark:text-gray-200 mt-2"
                                     >
                                       {product.title}
+                                    </p><br />
+                                    <p
+                                      tabIndex={0}
+                                      className="focus:outline-none text-xs text-gray-600 dark:text-gray-200 mt-2"
+                                    >
+                                      {product.category}
                                     </p>
                                   </Link>
                                   <div className="flex items-center justify-between pt-[2px]">

@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PostType } from "../types/post";
 import { ProductType } from "../types/product";
 import ManagerSlide from "./layouts/client/slides/ManagerSlide";
 
 type HomeProps = {
-  data: ProductType[]
+  data: ProductType[],
+  post : PostType[]
 };
 
 const Home = (props: HomeProps) => {
@@ -26,7 +28,7 @@ const Home = (props: HomeProps) => {
               <div className="mx-auto container py-8">
                 <div className="flex flex-wrap items-center lg:justify-between justify-center">
                   {/* Card 1 */}
-                  {props.data && props.data.map((product, index) => {
+                  {props.data && props.data.slice(1,5).map((product, index) => {
                     return (
                       <div key={index}
                         tabIndex={0}
@@ -126,146 +128,47 @@ const Home = (props: HomeProps) => {
               </div>
             </div>
             <div className="row gx-5">
-              <div className="col-lg-4 mb-5">
-                <div className="card h-100 shadow border-0">
-                  <img
-                    className="card-img-top"
-                    src="https://cdn.tgdd.vn/Files/2018/12/15/1138288/photo-1534802046520-4f27db7f3ae5_800x450.jpg"
-                    alt="..."
-                  />
-                  <div className="card-body p-4">
-                    <div className="badge bg-primary bg-gradient rounded-pill mb-2">
-                      News
+          {props.post && props.post.slice(1).map(post =>{
+            return (
+                <div className="col-lg-4 mb-5">
+                  <div className="card h-100 shadow border-0">
+                    <img className="card-img-top" src={post.img} alt="..." />
+                    <div className="card-body p-4">
+                      <div className="badge bg-primary bg-gradient rounded-pill mb-2">
+                        News
+                      </div>
+                      <Link className="text-decoration-none link-dark stretched-link" to={`post/${post._id}`}>
+                        <h5 className="card-title mb-3">{post.title}</h5>
+                      </Link>
+                      <p className="card-text mb-0">{post.desc}</p>
                     </div>
-                    <a
-                      className="text-decoration-none link-dark stretched-link"
-                      href="product"
-                    >
-                      <h5 className="card-title mb-3">Blog post title</h5>
-                    </a>
-                    <p className="card-text mb-0">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                  </div>
-                  <div className="card-footer p-4 pt-0 bg-transparent border-top-0">
-                    <div className="d-flex align-items-end justify-content-between">
-                      <div className="d-flex align-items-center">
-                        <img
-                          className="rounded-circle me-3"
-                          src="https://dummyimage.com/40x40/ced4da/6c757d"
-                          alt="..."
-                        />
-                        <div className="small">
-                          <div className="fw-bold">Kelly Rowan</div>
-                          <div className="text-muted">
-                            March 12, 2021 · 6 min read
+                    <div className="card-footer p-4 pt-0 bg-transparent border-top-0">
+                      <div className="d-flex align-items-end justify-content-between">
+                        <div className="d-flex align-items-center">
+                          <img
+                            className="rounded-circle me-3"
+                            src="https://dummyimage.com/40x40/ced4da/6c757d"
+                            alt="..."
+                          />
+                          <div className="small">
+                            <div className="fw-bold">Kelly Rowan</div>
+                            <div className="text-muted">
+                              March 12, 2021 · 6 min read
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-4 mb-5">
-                <div className="card h-100 shadow border-0">
-                  <img
-                    className="card-img-top"
-                    src="https://cdn.tgdd.vn/Files/2018/12/15/1138288/photo-1534802046520-4f27db7f3ae5_800x450.jpg"
-                    alt="..."
-                  />
-                  <div className="card-body p-4">
-                    <div className="badge bg-primary bg-gradient rounded-pill mb-2">
-                      Media
-                    </div>
-                    <a
-                      className="text-decoration-none link-dark stretched-link"
-                      href="#!"
-                    >
-                      <h5 className="card-title mb-3">
-                        Another blog post title
-                      </h5>
-                    </a>
-                    <p className="card-text mb-0">
-                      This text is a bit longer to illustrate the adaptive
-                      height of each card. Some quick example text to build on
-                      the card title and make up the bulk of the card's content.
-                    </p>
-                  </div>
-                  <div className="card-footer p-4 pt-0 bg-transparent border-top-0">
-                    <div className="d-flex align-items-end justify-content-between">
-                      <div className="d-flex align-items-center">
-                        <img
-                          className="rounded-circle me-3"
-                          src="https://dummyimage.com/40x40/ced4da/6c757d"
-                          alt="..."
-                        />
-                        <div className="small">
-                          <div className="fw-bold">Josiah Barclay</div>
-                          <div className="text-muted">
-                            March 23, 2021 · 4 min read
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 mb-5">
-                <div className="card h-100 shadow border-0">
-                  <img
-                    className="card-img-top"
-                    src="https://cdn.tgdd.vn/Files/2018/12/15/1138288/photo-1534802046520-4f27db7f3ae5_800x450.jpg"
-                    alt="..."
-                  />
-                  <div className="card-body p-4">
-                    <div className="badge bg-primary bg-gradient rounded-pill mb-2">
-                      News
-                    </div>
-                    <a
-                      className="text-decoration-none link-dark stretched-link"
-                      href="#!"
-                    >
-                      <h5 className="card-title mb-3">
-                        The last blog post title is a little bit longer than the
-                        others
-                      </h5>
-                    </a>
-                    <p className="card-text mb-0">
-                      Some more quick example text to build on the card title
-                      and make up the bulk of the card's content.
-                    </p>
-                  </div>
-                  <div className="card-footer p-4 pt-0 bg-transparent border-top-0">
-                    <div className="d-flex align-items-end justify-content-between">
-                      <div className="d-flex align-items-center">
-                        <img
-                          className="rounded-circle me-3"
-                          src="https://dummyimage.com/40x40/ced4da/6c757d"
-                          alt="..."
-                        />
-                        <div className="small">
-                          <div className="fw-bold">Evelyn Martinez</div>
-                          <div className="text-muted">
-                            April 2, 2021 · 10 min read
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Call to action*/}
+            );
+          })}</div>
             <aside className="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">
               <div className="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start">
                 <div className="mb-4 mb-xl-0">
                   <div className="fs-3 fw-bold text-white">
                     Đăng ký ngay để nhận thông báo từ chúng tôi.
                   </div>
-                  {/* <div className="text-white-50">
-                    Sign up for our newsletter for the latest updates.
-                  </div> */}
                 </div>
                 <div className="ms-xl-4">
                   <div className="input-group mb-2">

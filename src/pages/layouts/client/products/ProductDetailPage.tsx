@@ -58,6 +58,10 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                     <div className="product-info text-left">
                       <p>{product?.title}$</p>
                     </div>
+                    <div className="product-info text-left"><br></br>
+                      Danh mục sản phẩm
+                      <p className="">{product?.category}$</p>
+                    </div>
                     {/* Product Information Ends*/}
                     {/* Color Options */}
                   </div>

@@ -24,6 +24,7 @@ const Signin = () => {
     try {
       const { data: user } = await signin(data);
       authenticate(user, () => navigate("/"));
+      window.location.reload();
 
       // console.log(response.data)
     } catch (error: any) {

@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { Link, Navigate, Outlet } from 'react-router-dom'
 import { useNavigate } from "react-router-dom";
 import { UserType } from '../../../types/user';
+import { isAuthenticate } from '../../../untils/localStorage';
 
 type WebsiteLayoutProps = {};
 
 
 const WebsiteLayout = (props: WebsiteLayoutProps) => {
+  const {user} = isAuthenticate();
   const [error, setError] = useState();
   const authEmail = async (email: string) => {
     try {
@@ -46,7 +48,7 @@ const WebsiteLayout = (props: WebsiteLayoutProps) => {
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item"><Link className='nav-link pr-10' to={`/`}>Home</Link></li>
                 <li className="nav-item"><Link className='nav-link pr-10' to={`/product`}>Product</Link></li>
-                <li className="nav-item"><a className="nav-link" href="contact.html">About</a></li>
+                {/* <li className="nav-item"><a className="nav-link" href="contact.html">About</a></li> */}
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -54,15 +56,25 @@ const WebsiteLayout = (props: WebsiteLayoutProps) => {
                     {/* <li><a className="dropdown-item" href="blog-post.html">Blog Post</a></li> */}
                   </ul>
                 </li>
+                {user &&
+                <li className="nav-item dropdown">
+                  <a id='email' className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{user.name}</a>
+                  <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                    <li><Link id='email' className="dropdown-item" to={`#`}>Thông tin tài khoản</Link></li>
+                    <li><Link className="dropdown-item" to={`signup`}>Signup</Link></li>
+                    <li><Link to={``} id='logout' className="dropdown-item">Logout</Link></li>
+                  </ul>
+                </li>
+                }
+                {!user &&
                 <li className="nav-item dropdown">
                   <a id='email' className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">User</a>
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                    <li><Link id='email' className="dropdown-item" to={`#`}>User</Link></li>
-                    {!localStorage.getItem('user') && <li><Link className="dropdown-item" to={`/signin`}>Signin</Link></li>}
+                    <li><Link className="dropdown-item" to={`/signin`}>Signin</Link></li>
                     <li><Link className="dropdown-item" to={`signup`}>Signup</Link></li>
-                    {localStorage.getItem('user') && <li><a id='logout' className="dropdown-item">Logout</a></li>}
                   </ul>
                 </li>
+                }
               </ul>
             </div>
           </div>
