@@ -3,6 +3,8 @@ import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { CategoryType } from '../../../../types/category'
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 type CategoryAddProps = {
   onAddCates: (category: CategoryType) => void;
@@ -31,12 +33,14 @@ const CategoryAdd = (props: CategoryAddProps) => {
         });
       data.img = response.data.url;
       }
+      toastr.success("Thêm danh mục thành công");
       props.onAddCates(data);
-    //   navigate("/admin/category");
+      
+      navigate("/admin/category");
       window.location.reload();
     }
     return (
-        <div>
+        <div className='p-[10px]'>
             <section className="py-5">
                 <div className="container px-5">
                     {/* Contact form*/}

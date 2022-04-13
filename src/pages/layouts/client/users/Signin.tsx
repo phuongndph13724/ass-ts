@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { UserType } from "../../../../types/user";
 import { signin } from "../../../../api/user";
 import { authenticate } from "../../../../untils/localStorage";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 type FormValues = {
   email: string,
@@ -23,15 +25,14 @@ const Signin = () => {
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       const { data: user } = await signin(data);
+      toastr.success("Đăng nhập thành công");
       authenticate(user, () => navigate("/"));
       window.location.reload();
 
       // console.log(response.data)
     } catch (error: any) {
-      console.log(error.response)
-      if (error.response.status === 400) {
-        setError(error.response.data)
-      }
+      toastr.error(error);
+      
     }
   };
 

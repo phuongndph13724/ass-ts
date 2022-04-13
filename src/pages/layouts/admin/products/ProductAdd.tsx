@@ -5,6 +5,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { listCates } from '../../../../api/category';
 import { CategoryType } from '../../../../types/category';
 import { ProductType } from '../../../../types/product';
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 type ProductAddProps = {
     cates: CategoryType[],
@@ -46,10 +48,11 @@ const ProductAdd = (props: ProductAddProps) => {
         data.img = response.data.url; 
         }
         props.onAdd(data);
+        toastr.success("Thêm sản phẩm thành công");
         navigate('/admin/product');
     }
     return (
-        <div>
+        <div className='p-[10px]'>
             <section className="py-5">
                 <div className="container px-5">
                     {/* Contact form*/}

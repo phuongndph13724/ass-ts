@@ -53,7 +53,7 @@ const PostEdit = (props: PostEditProps) => {
       window.location.reload();
     }
     return (
-        <div>
+        <div className='p-[10px]'>
             <section className="py-5">
                 <div className="container px-5">
                     {/* Contact form*/}

@@ -3,6 +3,8 @@ import { useForm, SubmitHandler } from "react-hook-form"
 import { useNavigate } from 'react-router-dom'
 import { signup } from '../../../../api/user';
 import { UserType } from '../../../../types/user';
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 type SignupProps = {
   onAdd: (user: UserType) => void
@@ -23,6 +25,7 @@ const Signup = (props: SignupProps) => {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     signup(data);
+    toastr.success("Đăng ký thành công");
     navigate("/signin");
   }
   return (

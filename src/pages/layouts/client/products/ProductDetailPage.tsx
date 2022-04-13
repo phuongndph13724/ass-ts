@@ -10,7 +10,6 @@ type ProductDetailPageProps = {
 
 const ProductDetailPage = (props: ProductDetailPageProps) => {
   const { id } = useParams();
-  console.log(id);
   const [product, setProduct] = useState<ProductType[]>([])
   useEffect(() => {
     const getProduct = async () => {
@@ -194,7 +193,7 @@ const ProductDetailPage = (props: ProductDetailPageProps) => {
                     </div>
                     <div className="col-xl-5 col-lg-5 col-md-12 mb-2">
                       <div className="product-buttons pl-2">
-                        <button data-id={product?._id} className="mx-2 btn btn-danger btn-sm">Add to Cart</button>
+                        <button className="mx-2 btn btn-danger btn-sm">Add to Cart</button>
                         {/* <a
                           className="btn btn-info btn-sm"
                           href="ecommerce-checkout.html"

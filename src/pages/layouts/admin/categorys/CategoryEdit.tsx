@@ -3,6 +3,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { readCates } from '../../../../api/category';
 import { CategoryType } from '../../../../types/category';
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 type CategoryEditProps = {
     updateCates: (category: CategoryType) => void
@@ -28,10 +30,11 @@ const CategoryEdit = (props: CategoryEditProps) => {
     }, []);
 
     const onSubmit: SubmitHandler<FormInputs> = data => {
+        toastr.success("Sửa danh mục thành công");
         props.updateCates(data);
         // navigate("/admin/category");
     }
-    return <div>
+    return <div className='p-[10px]'>
         <section className="py-5">
             <div className="container px-5">
                 {/* Contact form*/}

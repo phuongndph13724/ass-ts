@@ -32,24 +32,24 @@ import { createPost, listPost, removePost, updatePost } from './api/post';
 import PostAdd from './pages/layouts/admin/posts/PostAdd';
 import PostEdit from './pages/layouts/admin/posts/PostEdit';
 import DetailPost from './pages/layouts/client/posts/DetailPost';
-import Myuser from './pages/layouts/client/users/myuser';
 import UserPage from './pages/layouts/client/users/UserPage';
+import Cart from './pages/layouts/client/Cart';
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [users, setUsers] = useState<UserType[]>([]);
   const [posts, setPosts] = useState<PostType[]>([]);
-  
+
   // const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await list();
-        setProducts(data);
+      setProducts(data);
     }
     getProducts();
   }, [])
-  const removeItem = async (id: number) => {
+  const removeItem = async (id: number | any) => {
     // xoa tren API
     const { data } = await remove(id);
     // reRender
@@ -83,14 +83,14 @@ function App() {
     };
     getCategorys();
   }, []);
-  
-  const removeItemCates = async (id: number) => {
+
+  const removeItemCates = async (id: number | any) => {
     // xoa tren API
     const { data } = await removeCates(id);
     data && setCategorys(categorys.filter((item) => item._id !== data._id));
   };
-  
-  const onHandleAddCates = async (category: ProductType) => {
+
+  const onHandleAddCates = async (category: CategoryType) => {
     // call api
     const { data } = await createCates(category);
     setProducts([...categorys, data]);
@@ -120,12 +120,14 @@ function App() {
       posts.map((posts) => (posts._id == data._id ? data : posts))
     );
   };
-  const removeItemPost = async (id: number) => {
+  const removeItemPost = async (id: number | any) => {
     // xoa tren API
     const { data } = await removePost(id);
     data && setPosts(posts.filter((item) => item._id !== data._id));
   };
   // end post
+
+  // cart
 
   return (
     <div className="App">
@@ -135,18 +137,19 @@ function App() {
 
           <Routes>
             <Route path="/" element={<WebsiteLayout />}>
-              <Route index element={<Home data={products} post={posts}/>} />
+              <Route index element={<Home data={products} post={posts} />} />
               <Route path="product">
                 <Route index element={<ProductPage cates={categorys} data={products} />} />
                 <Route path=':id' element={<ProductDetailPage data={products} />} />
               </Route>
               <Route path='post'>
-                <Route index element={<ManagerPost data={posts}/>}/>
-                <Route path=':id' element={<DetailPost data={posts}/>}/>
+                <Route index element={<ManagerPost data={posts} />} />
+                <Route path=':id' element={<DetailPost data={posts} />} />
               </Route>
               <Route path='user'>
-                <Route index element={<UserPage/>}/>
+                <Route index element={<UserPage />} />
               </Route>
+              <Route path='cart' element={<Cart/>}/>
 
               <Route path='signin' element={<Signin />} />
               <Route path='signup' element={<Signup onAdd={onHandleAddUser} />} />
@@ -170,12 +173,12 @@ function App() {
                 <Route path=":id/edit" element={<CategoryEdit updateCates={onHandleUpdateCates} />} />
               </Route>
               <Route path='post'>
-                <Route index element={<PostList onRemovePost={removeItemPost} posts={posts}/>}/>
-                <Route path='add' element={<PostAdd addPost={onHandleAddPost}/>}/>
-                <Route path=':id/edit' element={<PostEdit data={posts} updatePost={updatePosts}/>}/>
+                <Route index element={<PostList onRemovePost={removeItemPost} posts={posts} />} />
+                <Route path='add' element={<PostAdd addPost={onHandleAddPost} />} />
+                <Route path=':id/edit' element={<PostEdit data={posts} updatePost={updatePosts} />} />
               </Route>
               <Route path='slider'>
-                  <Route element={<ManagerSlide/>}/>
+                <Route element={<ManagerSlide />} />
               </Route>
             </Route>
           </Routes>

@@ -19,7 +19,7 @@ const ManagerProduct = (props: ManagerProductProps) => {
         getCategorys();
     }, []);
   return (
-    <div>
+    <div className="p-[10px]">
       <h2 className=" my-4 mx-4 text-left">
         <Link className="text-2xl" to={`/admin/product/add`}>
           Thêm sản phẩm mới

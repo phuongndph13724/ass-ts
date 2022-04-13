@@ -6,6 +6,8 @@ import { listCates } from '../../../../api/category';
 import { read, update } from '../../../../api/product';
 import { CategoryType } from '../../../../types/category';
 import { ProductType } from '../../../../types/product';
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 type ProductEditProps = {
     cates : CategoryType[],
@@ -59,11 +61,11 @@ const ProductEdit = (props: ProductEditProps) => {
         data.img = response.data.url;
         }
         props.onUpdate(data);
-
+        toastr.success("Sửa sản phẩm thành công")
         navigate("/admin/product");
     };  
     return (
-        <div>
+        <div className='p-[10px]'>
             <section className="py-5">
                 <div className="container px-5">
                     {/* Contact form*/}
