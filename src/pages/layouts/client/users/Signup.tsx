@@ -13,7 +13,8 @@ type FormValues = {
   email: string,
   phone: string,
   password: string,
-  address: string
+  address: string,
+  img : string
 };
 
 const Signup = (props: SignupProps) => {

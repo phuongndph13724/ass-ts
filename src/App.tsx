@@ -32,6 +32,8 @@ import { createPost, listPost, removePost, updatePost } from './api/post';
 import PostAdd from './pages/layouts/admin/posts/PostAdd';
 import PostEdit from './pages/layouts/admin/posts/PostEdit';
 import DetailPost from './pages/layouts/client/posts/DetailPost';
+import Myuser from './pages/layouts/client/users/myuser';
+import UserPage from './pages/layouts/client/users/UserPage';
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -140,8 +142,12 @@ function App() {
               </Route>
               <Route path='post'>
                 <Route index element={<ManagerPost data={posts}/>}/>
-                <Route path=':id' element={<DetailPost/>}/>
+                <Route path=':id' element={<DetailPost data={posts}/>}/>
               </Route>
+              <Route path='user'>
+                <Route index element={<UserPage/>}/>
+              </Route>
+
               <Route path='signin' element={<Signin />} />
               <Route path='signup' element={<Signup onAdd={onHandleAddUser} />} />
             </Route>

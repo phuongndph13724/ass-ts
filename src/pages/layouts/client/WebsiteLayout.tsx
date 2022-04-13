@@ -10,6 +10,7 @@ type WebsiteLayoutProps = {};
 const WebsiteLayout = (props: WebsiteLayoutProps) => {
   const {user} = isAuthenticate();
   const [error, setError] = useState();
+  const navigate = useNavigate();
   const authEmail = async (email: string) => {
     try {
       const auth = await localStorage.getItem("user");
@@ -34,7 +35,7 @@ const WebsiteLayout = (props: WebsiteLayoutProps) => {
   if (logout) {
     logout.addEventListener('click', function () {
       localStorage.removeItem('user');
-      window.location.reload();
+      navigate('/');
     })
   }
   return (
@@ -60,7 +61,7 @@ const WebsiteLayout = (props: WebsiteLayoutProps) => {
                 <li className="nav-item dropdown">
                   <a id='email' className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{user.name}</a>
                   <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                    <li><Link id='email' className="dropdown-item" to={`#`}>Thông tin tài khoản</Link></li>
+                    <li><Link id='email' className="dropdown-item" to={`user`}>Thông tin tài khoản</Link></li>
                     <li><Link className="dropdown-item" to={`signup`}>Signup</Link></li>
                     <li><Link to={``} id='logout' className="dropdown-item">Logout</Link></li>
                   </ul>

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+import { readPost } from '../../../../api/post';
 import { PostType } from '../../../../types/post';
 
 type DetailPostProps = {
@@ -6,6 +8,15 @@ type DetailPostProps = {
 };
 
 const DetailPost = (props: DetailPostProps) => {
+  const {id} = useParams();
+  const [posts, setPosts] = useState<PostType[]>([]);
+  useEffect(() =>{
+    const getPost = async () => {
+      const {data : post} = await readPost(id);
+      setPosts(post);
+    }
+    getPost();
+  },[])
   return (
     <div className="d-flex flex-column">
       <div className="flex-shrink-0">
@@ -51,31 +62,28 @@ const DetailPost = (props: DetailPostProps) => {
                     </a>
                   </header>
                   {/* Preview image figure*/}
-                  <figure className="mb-4">
+                  <figure className="mb-4 h-[400px] w-[900px]">
                     <img
                       className="img-fluid rounded"
-                      src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
+                      src={posts.img}
                       alt="..."
                     />
                   </figure>
                   {/* Post content*/}
                   <section className="mb-5 w-[900px]">
                     <h2 className="fw-bold text-lefter mb-4 mt-5 text-left fs-2">
-                      I have odd cosmic thoughts every day
+                      {posts.title}
                     </h2>
                     <p className="fs-5 mb-4">
-                      For me, the most fascinating interface is Twitter. I have
-                      odd cosmic thoughts every day and I realized I could hold
-                      them to myself or share them with people who might be
-                      interested.
+                      {posts.desc}
                     </p>
-                    <p className="fs-5 mb-4">
+                    {/* <p className="fs-5 mb-4">
                       Venus has a runaway greenhouse effect. I kind of want to
                       know what happened there because we're twirling knobs here
                       on Earth without knowing the consequences of it. Mars once
                       had running water. It's bone dry today. Something bad
                       happened there as well.
-                    </p>
+                    </p> */}
                   </section>
                 </article>
                 {/* Comments section*/}

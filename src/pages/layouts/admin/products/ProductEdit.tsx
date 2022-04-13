@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -41,11 +42,26 @@ const ProductEdit = (props: ProductEditProps) => {
         getProduct();
     }, []);
 
-    const onSubmit: SubmitHandler<FormInputs> = data => {
+    const onSubmit: SubmitHandler<FormInputs> = async data => {
+
+        const file = data.img[0];
+        const CLOUDINARY_PRESET_KEY = "ppusewr6";
+        const CLOUDINARY_API_URL = "https://api.cloudinary.com/v1_1/dqhtmst8q/image/upload";
+        if(file){
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", CLOUDINARY_PRESET_KEY);
+            const response = await axios.post(CLOUDINARY_API_URL, formData, {
+            headers: {
+                "Content-Type": "application/form-data"
+            },
+            });
+        data.img = response.data.url;
+        }
         props.onUpdate(data);
 
         navigate("/admin/product");
-    };
+    };  
     return (
         <div>
             <section className="py-5">
